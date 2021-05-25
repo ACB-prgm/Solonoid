@@ -12,7 +12,7 @@ light_mode = 1
 [sub_resource type="Curve" id=10]
 _data = [ Vector2( 0, 0.86036 ), 0.0, -0.0882878, 0, 0, Vector2( 0.25, 0.972973 ), 0.0, 0.0, 0, 0, Vector2( 1, 0.405405 ), -0.900194, 0.0, 0, 0 ]
 
-[sub_resource type="Gradient" id=2]
+[sub_resource type="Gradient" id=14]
 offsets = PoolRealArray( 0, 0.868421, 1 )
 colors = PoolColorArray( 0.826638, 1, 0.995968, 1, 0.666667, 1, 0.764706, 0, 0.666667, 1, 0.764706, 0 )
 
@@ -40,7 +40,7 @@ points = PoolVector2Array( 0, 0, 0, 0 )
 width = 20.0
 width_curve = SubResource( 10 )
 default_color = Color( 0.32549, 1, 0.984314, 1 )
-gradient = SubResource( 2 )
+gradient = SubResource( 14 )
 joint_mode = 2
 antialiased = true
 script = ExtResource( 4 )
@@ -71,5 +71,5 @@ process_material = ExtResource( 5 )
 
 [connection signal="area_entered" from="." to="." method="_on_Area2D_area_entered"]
 [connection signal="body_entered" from="." to="." method="_on_Area2D_body_entered"]
-[connection signal="tween_completed" from="BulletTrailLine2D/Tween" to="." method="_on_BulletTrailTween_tween_completed"]
+[connection signal="tween_all_completed" from="BulletTrailLine2D/Tween" to="." method="_on_LineTrail_Tween_tween_all_completed"]
 [connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]

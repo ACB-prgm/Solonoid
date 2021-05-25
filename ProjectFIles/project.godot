@@ -24,6 +24,11 @@ config/name="GoGodotJam"
 run/main_scene="res://Scenes/BasicWorld/3DViewer.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+ParticlesCache="*res://Scenes/Autoloads/ParticlesCache.gd"
+Globals="*res://Scenes/Autoloads/Globals.gd"
+
 [display]
 
 window/size/width=3840

@@ -16,6 +16,10 @@ var input_vector: Vector2
 var velocity: Vector2
 
 
+func _ready():
+	Globals.player = self
+
+
 func _physics_process(_delta):
 	movement()
 	aim()

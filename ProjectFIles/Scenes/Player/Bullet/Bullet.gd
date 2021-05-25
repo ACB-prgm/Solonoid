@@ -9,6 +9,7 @@ onready var tween = $Tween
 onready var light = $Light2D
 onready var drift := rand_range(-.025, .025)
 
+var impact_TSCN = preload("res://Scenes/Player/Bullet/BulletImpact.tscn")
 var dead := false
 var damage := 1
 
@@ -30,10 +31,10 @@ func _on_Area2D_body_entered(_body):
 	die()
 
 func _on_VisibilityNotifier2D_screen_exited():
-	die()
+	die(true)
 
 
-func die():
+func die(offscreen = false):
 	if !dead:
 		dead = true
 		
@@ -42,13 +43,16 @@ func die():
 		
 		$Bullet.hide()
 		$Particles2D.set_emitting(false)
-		
-		tween.interpolate_property(light, "energy", light.energy, 0.0, 
-		0.15, Tween.TRANS_BOUNCE, Tween.EASE_IN_OUT)
-		tween.start()
+		$Light2D.hide()
 		
 		trail.end()
+		
+		if !offscreen:
+			var impact_ins = impact_TSCN.instance()
+			impact_ins.global_position = global_position + Vector2(50, 0).rotated(rotation)
+			impact_ins.rotation = rotation
+			get_parent().call_deferred("add_child", impact_ins)
 
 
-func _on_BulletTrailTween_tween_completed(object, key):
+func _on_LineTrail_Tween_tween_all_completed():
 	queue_free()

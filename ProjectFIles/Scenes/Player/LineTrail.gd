@@ -13,6 +13,9 @@ func _ready():
 
 
 func _physics_process(_delta):
+	if !parent or !is_instance_valid(parent):
+		queue_free()
+		
 	frame += 1
 	
 	if frame % 3 == 0:

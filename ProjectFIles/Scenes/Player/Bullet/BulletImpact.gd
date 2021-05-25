@@ -7,7 +7,7 @@ onready var light = $Light2D
 
 
 func _ready():
-	tween.interpolate_property(light, "energy", 1.0, 0.0, 
+	tween.interpolate_property(light, "energy", null, 0.0, 
 	0.2, Tween.TRANS_BOUNCE, Tween.EASE_IN_OUT)
 	tween.start()
 	
@@ -15,3 +15,5 @@ func _ready():
 	$AnimatedSprite.play()
 
 
+func _on_Particles2D_Plus_particles_cycle_finished():
+	queue_free()
