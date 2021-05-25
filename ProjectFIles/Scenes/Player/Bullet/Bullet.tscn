@@ -1,0 +1,75 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Images/Bullet.png" type="Texture" id=2]
+[ext_resource path="res://Scenes/Player/Bullet/Bullet.gd" type="Script" id=3]
+[ext_resource path="res://Scenes/Player/Bullet/BulletTrailLine2D.gd" type="Script" id=4]
+[ext_resource path="res://Scenes/Autoloads/Materials/PlayerBullet.tres" type="Material" id=5]
+
+[sub_resource type="CanvasItemMaterial" id=13]
+blend_mode = 1
+light_mode = 1
+
+[sub_resource type="Curve" id=10]
+_data = [ Vector2( 0, 0.86036 ), 0.0, -0.0882878, 0, 0, Vector2( 0.25, 0.972973 ), 0.0, 0.0, 0, 0, Vector2( 1, 0.405405 ), -0.900194, 0.0, 0, 0 ]
+
+[sub_resource type="Gradient" id=2]
+offsets = PoolRealArray( 0, 0.868421, 1 )
+colors = PoolColorArray( 0.826638, 1, 0.995968, 1, 0.666667, 1, 0.764706, 0, 0.666667, 1, 0.764706, 0 )
+
+[sub_resource type="RectangleShape2D" id=12]
+extents = Vector2( 50.05, 20.1 )
+
+[node name="Area2D" type="Area2D"]
+modulate = Color( 1.1, 1.1, 1.5, 1 )
+scale = Vector2( 0.8, 0.8 )
+collision_layer = 8
+collision_mask = 20
+script = ExtResource( 3 )
+
+[node name="Bullet" type="Sprite" parent="."]
+material = SubResource( 13 )
+position = Vector2( 57.1875, 0 )
+scale = Vector2( 0.4, 0.4 )
+texture = ExtResource( 2 )
+
+[node name="BulletTrailLine2D" type="Line2D" parent="."]
+show_behind_parent = true
+position = Vector2( 12.4375, 0 )
+scale = Vector2( 0.4, 0.4 )
+points = PoolVector2Array( 0, 0, 0, 0 )
+width = 20.0
+width_curve = SubResource( 10 )
+default_color = Color( 0.32549, 1, 0.984314, 1 )
+gradient = SubResource( 2 )
+joint_mode = 2
+antialiased = true
+script = ExtResource( 4 )
+
+[node name="Tween" type="Tween" parent="BulletTrailLine2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource( 12 )
+
+[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
+position = Vector2( 57.1875, 0 )
+
+[node name="Light2D" type="Light2D" parent="."]
+position = Vector2( 57.1875, 0 )
+texture = ExtResource( 2 )
+texture_scale = 0.6
+color = Color( 0.580392, 0.976471, 1, 1 )
+energy = 0.4
+
+[node name="Tween" type="Tween" parent="."]
+
+[node name="Particles2D" type="Particles2D" parent="."]
+amount = 24
+lifetime = 0.2
+local_coords = false
+process_material = ExtResource( 5 )
+
+[connection signal="area_entered" from="." to="." method="_on_Area2D_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_Area2D_body_entered"]
+[connection signal="tween_completed" from="BulletTrailLine2D/Tween" to="." method="_on_BulletTrailTween_tween_completed"]
+[connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]

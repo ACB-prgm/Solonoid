@@ -1,0 +1,65 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Images/ship_sidesB.png" type="Texture" id=1]
+[ext_resource path="res://Scenes/Player/Player.gd" type="Script" id=2]
+[ext_resource path="res://Audio/SoundEffects/Thrusters.ogg" type="AudioStream" id=3]
+[ext_resource path="res://Scenes/Player/MuzzleFlash/MuzzleFlash.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Images/PlayerShipNormal.png" type="Texture" id=5]
+[ext_resource path="res://Scenes/Player/LineTrail.tscn" type="PackedScene" id=6]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 48.0536
+
+[node name="KinematicBody2D" type="KinematicBody2D"]
+script = ExtResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="."]
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 1 )
+normal_map = ExtResource( 5 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource( 1 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
+zoom = Vector2( 1.5, 1.5 )
+smoothing_enabled = true
+smoothing_speed = 7.5
+
+[node name="ShootTimer" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
+
+[node name="ThrustersAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+volume_db = -5.0
+autoplay = true
+bus = "SoundEffects"
+
+[node name="BarrelPosition2D" type="Position2D" parent="."]
+show_behind_parent = true
+position = Vector2( 0, -70 )
+
+[node name="MuzzleFlash" parent="BarrelPosition2D" instance=ExtResource( 4 )]
+
+[node name="LineTrails" type="Node2D" parent="."]
+
+[node name="FrontRightTrail" parent="LineTrails" instance=ExtResource( 6 )]
+position = Vector2( 50, -20 )
+MAX_POINTS = 4
+
+[node name="FrontLeftTrail" parent="LineTrails" instance=ExtResource( 6 )]
+position = Vector2( -50, -20 )
+MAX_POINTS = 4
+
+[node name="BackLeftTrail" parent="LineTrails" instance=ExtResource( 6 )]
+position = Vector2( -45, 45 )
+MAX_POINTS = 5
+
+[node name="BackRightTrail" parent="LineTrails" instance=ExtResource( 6 )]
+position = Vector2( 45, 45 )
+MAX_POINTS = 5
+
+[connection signal="timeout" from="ShootTimer" to="." method="_on_ShootTimer_timeout"]

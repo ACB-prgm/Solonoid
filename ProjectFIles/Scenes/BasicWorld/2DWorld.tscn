@@ -1,0 +1,56 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Images/Parralax.png" type="Texture" id=1]
+[ext_resource path="res://Images/Untitled.png" type="Texture" id=2]
+[ext_resource path="res://Scenes/Player/Player.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Images/ship_sidesC.png" type="Texture" id=4]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+scroll_base_scale = Vector2( 0.3, 0.3 )
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2( 3840, 2000 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
+scale = Vector2( 2, 2 )
+texture = ExtResource( 1 )
+centered = false
+
+[node name="Sprite" type="Sprite" parent="."]
+modulate = Color( 1, 1, 1, 0.9 )
+position = Vector2( 1920, 538 )
+z_index = -2
+texture = ExtResource( 2 )
+
+[node name="Sprite2" type="Sprite" parent="."]
+modulate = Color( 1, 1, 1, 0.9 )
+position = Vector2( 1920, 1502.69 )
+z_index = -2
+texture = ExtResource( 2 )
+
+[node name="KinematicBody2D" parent="." instance=ExtResource( 3 )]
+position = Vector2( 1930, 1364 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2( 1748, 432 )
+collision_layer = 4
+collision_mask = 22
+
+[node name="Sprite" type="Sprite" parent="StaticBody2D"]
+texture = ExtResource( 4 )
+flip_v = true
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PoolVector2Array( 31.33, 49.358, 26.3802, -7.21057, 0.217285, 30.6196, -29.1277, -4.38214, -29.4812, 51.1257, -53.1693, -16.403, -33.0168, -52.819, -16.0461, -31.9593, -1.19702, -46.455, 13.6523, -32.6664, 26.7338, -39.0304, 27.4409, -58.4758, 51.4824, -19.2314 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0.1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
