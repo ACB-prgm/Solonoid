@@ -58,3 +58,9 @@ __meta__ = {
 
 [node name="KinematicBody2D2" parent="." instance=ExtResource( 5 )]
 position = Vector2( 1966, 161 )
+
+[node name="KinematicBody2D3" parent="." instance=ExtResource( 5 )]
+position = Vector2( 2266.59, 204.586 )
+
+[node name="KinematicBody2D4" parent="." instance=ExtResource( 5 )]
+position = Vector2( 2168.9, 0.184143 )

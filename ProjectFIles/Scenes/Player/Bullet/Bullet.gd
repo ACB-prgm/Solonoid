@@ -49,7 +49,7 @@ func die(offscreen = false):
 		
 		if !offscreen:
 			var impact_ins = impact_TSCN.instance()
-			impact_ins.global_position = global_position + Vector2(50, 0).rotated(rotation)
+			impact_ins.global_position = global_position
 			impact_ins.rotation = rotation
 			get_parent().call_deferred("add_child", impact_ins)
 

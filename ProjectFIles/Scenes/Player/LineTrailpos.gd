@@ -13,7 +13,9 @@ onready var line = $Line2D
 func _ready():
 	line.MAX_POINTS = MAX_POINTS
 	line.gradient = line_gradient
+	line.width = line_thickness
 	
+	light.texture_scale = lerp(0.07, 0.5, 0.1/line_thickness)
 	light.color = light_color
 	
 

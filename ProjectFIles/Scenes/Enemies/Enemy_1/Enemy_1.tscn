@@ -6,8 +6,8 @@
 [ext_resource path="res://Scenes/Enemies/Enemy_1/Enemy_1.gd" type="Script" id=4]
 
 [sub_resource type="Gradient" id=1]
-offsets = PoolRealArray( 0, 0.988372 )
-colors = PoolColorArray( 0.901961, 0.2, 0.2, 1, 0.266667, 0.0627451, 0.0627451, 0 )
+offsets = PoolRealArray( 0, 0.84375 )
+colors = PoolColorArray( 0.901961, 0.2, 0.2, 1, 0.282353, 0.109804, 0.109804, 0 )
 
 [node name="KinematicBody2D" type="KinematicBody2D"]
 collision_layer = 4
@@ -24,7 +24,7 @@ normal_map = ExtResource( 2 )
 [node name="Position2D" parent="." instance=ExtResource( 3 )]
 position = Vector2( -50, 0 )
 rotation = 1.5708
-line_thickness = 25
+line_thickness = 20
 line_gradient = SubResource( 1 )
 light_color = Color( 0.901961, 0.2, 0.2, 1 )
 
@@ -32,3 +32,20 @@ light_color = Color( 0.901961, 0.2, 0.2, 1 )
 visible = false
 rotation = 1.5708
 polygon = PoolVector2Array( 0.175003, -55.95, 39.425, 43.925, 0.425003, 65.425, -39.825, 44.8 )
+
+[node name="RepelArea" type="Area2D" parent="."]
+collision_layer = 32
+collision_mask = 32
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="RepelArea"]
+position = Vector2( 6.20197, 0.40448 )
+rotation = 1.5708
+scale = Vector2( 1.4, 1.2 )
+polygon = PoolVector2Array( 0.175003, -55.95, 39.425, 43.925, 0.425003, 65.425, -39.825, 44.8 )
+
+[node name="RepelTimer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[connection signal="area_entered" from="RepelArea" to="." method="_on_RepelArea_area_entered"]
+[connection signal="timeout" from="RepelTimer" to="." method="_on_RepelTimer_timeout"]

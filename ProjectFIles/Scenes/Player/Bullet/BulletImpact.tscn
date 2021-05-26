@@ -58,11 +58,10 @@ script = ExtResource( 5 )
 texture = ExtResource( 3 )
 texture_scale = 0.1
 color = Color( 0.580392, 0.976471, 1, 1 )
-energy = 0.6
+energy = 2.0
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-visible = false
-scale = Vector2( 0.35, 0.35 )
+scale = Vector2( 0.4, 0.4 )
 frames = SubResource( 8 )
 
 [node name="Particles2D_Plus" type="Particles2D" parent="."]
