@@ -13,14 +13,14 @@ light_mode = 1
 _data = [ Vector2( 0, 0.86036 ), 0.0, -0.0882878, 0, 0, Vector2( 0.25, 0.972973 ), 0.0, 0.0, 0, 0, Vector2( 1, 0.405405 ), -0.900194, 0.0, 0, 0 ]
 
 [sub_resource type="Gradient" id=3]
-offsets = PoolRealArray( 0, 0.868421, 1 )
-colors = PoolColorArray( 0.826638, 1, 0.995968, 1, 0.666667, 1, 0.764706, 0, 0.666667, 1, 0.764706, 0 )
+offsets = PoolRealArray( 0, 0.496711, 0.980263 )
+colors = PoolColorArray( 0.919378, 1, 0.997643, 1, 0.64987, 1, 0.989762, 1, 0.65098, 1, 0.988235, 0 )
 
 [sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 50.05, 20.1 )
 
 [node name="Area2D" type="Area2D"]
-modulate = Color( 1.1, 1.1, 1.5, 1 )
+modulate = Color( 1.1, 1.1, 1.15, 1 )
 scale = Vector2( 0.8, 0.8 )
 collision_layer = 8
 collision_mask = 20

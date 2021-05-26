@@ -7,13 +7,14 @@ export var steer_force = 200.0
 onready var thrusterSound = $ThusterSound
 onready var tween = $Tween
 onready var damaged_light = $DamagedLight2D
+onready var onLight = $OnLight
 
 var death_TSCN = preload("res://Scenes/Enemies/EnemyDeaths/Enemy_Death.tscn")
 var velocity := Vector2.RIGHT
 var desired := Vector2.LEFT
 var acceleration := Vector2.ZERO
 var repel
-var health := 3
+var health := 2
 var repel_force: float
 var repel_distance: float
 var dead := false
@@ -119,10 +120,16 @@ func die():
 		
 		tween.interpolate_property(thrusterSound, "pitch_scale", 
 		null, 20.0 + rand_range(-2, 2), 
-		.3, Tween.TRANS_EXPO, Tween.EASE_IN)
+		.15, Tween.TRANS_EXPO, Tween.EASE_IN)
 		tween.interpolate_property(thrusterSound, "volume_db", 
 		null, clamp(thrusterSound.volume_db + 5, 0.0, 10.0), 
-		.35, Tween.TRANS_EXPO, Tween.EASE_IN)
+		.15, Tween.TRANS_EXPO, Tween.EASE_IN)
+		
+		tween.interpolate_property(onLight, "energy", 
+		null, 50, .15, Tween.TRANS_EXPO, Tween.EASE_IN)
+		tween.interpolate_property(onLight, "range_height", 
+		null, 100, .15, Tween.TRANS_EXPO, Tween.EASE_IN)
+		
 		tween.start()
 
 

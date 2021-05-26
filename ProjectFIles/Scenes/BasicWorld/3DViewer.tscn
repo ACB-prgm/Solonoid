@@ -15,8 +15,10 @@ flags_albedo_tex_force_srgb = true
 albedo_texture = SubResource( 2 )
 
 [sub_resource type="Environment" id=4]
-glow_intensity = 0.7
+glow_enabled = true
+glow_intensity = 0.1
 glow_blend_mode = 0
+glow_bicubic_upscale = true
 
 [node name="Spatial" type="Spatial"]
 

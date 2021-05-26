@@ -8,47 +8,47 @@
 [ext_resource path="res://Images/Enemy_Shards.png" type="Texture" id=6]
 [ext_resource path="res://Images/Enemy_Shards_n.png" type="Texture" id=7]
 
-[sub_resource type="CanvasItemMaterial" id=9]
+[sub_resource type="CanvasItemMaterial" id=1]
 blend_mode = 2
-
-[sub_resource type="AtlasTexture" id=1]
-flags = 4
-atlas = ExtResource( 3 )
-region = Rect2( 0, 0, 350, 350 )
 
 [sub_resource type="AtlasTexture" id=2]
 flags = 4
 atlas = ExtResource( 3 )
-region = Rect2( 350, 0, 350, 350 )
+region = Rect2( 0, 0, 350, 350 )
 
 [sub_resource type="AtlasTexture" id=3]
 flags = 4
 atlas = ExtResource( 3 )
-region = Rect2( 700, 0, 350, 350 )
+region = Rect2( 350, 0, 350, 350 )
 
 [sub_resource type="AtlasTexture" id=4]
 flags = 4
 atlas = ExtResource( 3 )
-region = Rect2( 1050, 0, 350, 350 )
+region = Rect2( 700, 0, 350, 350 )
 
 [sub_resource type="AtlasTexture" id=5]
 flags = 4
 atlas = ExtResource( 3 )
-region = Rect2( 1400, 0, 350, 350 )
+region = Rect2( 1050, 0, 350, 350 )
 
 [sub_resource type="AtlasTexture" id=6]
 flags = 4
 atlas = ExtResource( 3 )
-region = Rect2( 1750, 0, 350, 350 )
+region = Rect2( 1400, 0, 350, 350 )
 
 [sub_resource type="AtlasTexture" id=7]
 flags = 4
 atlas = ExtResource( 3 )
+region = Rect2( 1750, 0, 350, 350 )
+
+[sub_resource type="AtlasTexture" id=8]
+flags = 4
+atlas = ExtResource( 3 )
 region = Rect2( 2100, 0, 350, 350 )
 
-[sub_resource type="SpriteFrames" id=8]
+[sub_resource type="SpriteFrames" id=9]
 animations = [ {
-"frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), null ],
+"frames": [ SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), null ],
 "loop": false,
 "name": "default",
 "speed": 25.0
@@ -65,15 +65,14 @@ script = ExtResource( 2 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 modulate = Color( 0.15, 1, 1, 1 )
-material = SubResource( 9 )
-frames = SubResource( 8 )
+material = SubResource( 1 )
+frames = SubResource( 9 )
 frame = 7
 
 [node name="Light2D" type="Light2D" parent="."]
 texture = ExtResource( 4 )
-texture_scale = 0.4
+texture_scale = 0.5
 color = Color( 0.901961, 0.2, 0.2, 1 )
-energy = 2.0
 
 [node name="Particles2D_Plus" type="Particles2D" parent="."]
 modulate = Color( 0.101961, 0.101961, 0.109804, 1 )

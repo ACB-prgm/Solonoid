@@ -57,7 +57,6 @@ texture = ExtResource( 1 )
 texture_scale = 0.5
 color = Color( 0.901961, 0.2, 0.2, 1 )
 energy = 4.0
-range_height = 44.0
 
 [node name="DamagedLight2D" type="Light2D" parent="."]
 position = Vector2( 49.4093, 4.79089 )

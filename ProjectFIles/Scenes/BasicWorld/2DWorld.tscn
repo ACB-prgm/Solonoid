@@ -1,12 +1,14 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Images/Parralax.png" type="Texture" id=1]
 [ext_resource path="res://Images/Untitled.png" type="Texture" id=2]
 [ext_resource path="res://Scenes/Player/Player.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Images/ship_sidesC.png" type="Texture" id=4]
+[ext_resource path="res://Scenes/BasicWorld/2DWorld.gd" type="Script" id=4]
 [ext_resource path="res://Scenes/Enemies/Enemy_1/Enemy_1.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Scenes/DestroyWal/DestoryWall.tscn" type="PackedScene" id=6]
 
 [node name="Node2D" type="Node2D"]
+script = ExtResource( 4 )
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 scroll_base_scale = Vector2( 0.3, 0.3 )
@@ -34,18 +36,6 @@ texture = ExtResource( 2 )
 [node name="KinematicBody2D" parent="." instance=ExtResource( 3 )]
 position = Vector2( 1930, 1364 )
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
-position = Vector2( 1748, 432 )
-collision_layer = 4
-collision_mask = 22
-
-[node name="Sprite" type="Sprite" parent="StaticBody2D"]
-texture = ExtResource( 4 )
-flip_v = true
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
-polygon = PoolVector2Array( 31.33, 49.358, 26.3802, -7.21057, 0.217285, 30.6196, -29.1277, -4.38214, -29.4812, 51.1257, -53.1693, -16.403, -33.0168, -52.819, -16.0461, -31.9593, -1.19702, -46.455, 13.6523, -32.6664, 26.7338, -39.0304, 27.4409, -58.4758, 51.4824, -19.2314 )
-
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
@@ -63,3 +53,6 @@ position = Vector2( -37.6537, 356.576 )
 
 [node name="KinematicBody2D4" parent="." instance=ExtResource( 5 )]
 position = Vector2( 188.722, 277.64 )
+
+[node name="DestoryWall" parent="." instance=ExtResource( 6 )]
+position = Vector2( 1916, 130 )

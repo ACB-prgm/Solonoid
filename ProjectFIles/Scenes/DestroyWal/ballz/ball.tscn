@@ -8,8 +8,6 @@
 margin_right = 50.0
 margin_bottom = 50.0
 rect_min_size = Vector2( 50, 50 )
-size_flags_horizontal = 4
-size_flags_vertical = 4
 script = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -24,8 +22,10 @@ offset = Vector2( 25, 25 )
 [node name="Light2D" type="Light2D" parent="Sprite"]
 texture = ExtResource( 1 )
 offset = Vector2( 25, 25 )
+texture_scale = 1.1
 color = Color( 0.901961, 0.2, 0.2, 1 )
 energy = 2.0
+range_height = 20.7
 
 [node name="Tween" type="Tween" parent="."]
 
