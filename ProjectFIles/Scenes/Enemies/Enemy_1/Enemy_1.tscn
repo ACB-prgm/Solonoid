@@ -1,21 +1,25 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Images/Enemy_1/Enemy_1.png" type="Texture" id=1]
 [ext_resource path="res://Images/Enemy_1/Enemy_1_Normal.png" type="Texture" id=2]
 [ext_resource path="res://Scenes/Player/LineTrail.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scenes/Enemies/Enemy_1/Enemy_1.gd" type="Script" id=4]
+[ext_resource path="res://Audio/SoundEffects/Screamers.ogg" type="AudioStream" id=5]
 
 [sub_resource type="Gradient" id=1]
 offsets = PoolRealArray( 0, 0.84375 )
 colors = PoolColorArray( 0.901961, 0.2, 0.2, 1, 0.282353, 0.109804, 0.109804, 0 )
 
+[sub_resource type="CircleShape2D" id=2]
+radius = 71.6892
+
 [node name="KinematicBody2D" type="KinematicBody2D"]
 collision_layer = 4
-collision_mask = 23
+collision_mask = 19
 script = ExtResource( 4 )
 
 [node name="Sprite" type="Sprite" parent="."]
-modulate = Color( 0.1, 0.1, 0.11, 1 )
+modulate = Color( 0.101961, 0.101961, 0.109804, 1 )
 rotation = 1.5708
 scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 1 )
@@ -37,15 +41,34 @@ polygon = PoolVector2Array( 0.175003, -55.95, 39.425, 43.925, 0.425003, 65.425, 
 collision_layer = 32
 collision_mask = 32
 
-[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="RepelArea"]
-position = Vector2( 6.20197, 0.40448 )
-rotation = 1.5708
-scale = Vector2( 1.4, 1.2 )
-polygon = PoolVector2Array( 0.175003, -55.95, 39.425, 43.925, 0.425003, 65.425, -39.825, 44.8 )
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RepelArea"]
+visible = false
+position = Vector2( -14.2396, 0.593315 )
+shape = SubResource( 2 )
 
-[node name="RepelTimer" type="Timer" parent="."]
-wait_time = 0.5
-one_shot = true
+[node name="ThusterSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
+autoplay = true
+bus = "SoundEffects"
+
+[node name="OnLight" type="Light2D" parent="."]
+rotation = 1.5708
+texture = ExtResource( 1 )
+texture_scale = 0.5
+color = Color( 0.901961, 0.2, 0.2, 1 )
+energy = 4.0
+range_height = 44.0
+
+[node name="DamagedLight2D" type="Light2D" parent="."]
+position = Vector2( 49.4093, 4.79089 )
+rotation = 1.5708
+texture = ExtResource( 1 )
+offset = Vector2( -4.79088, 49.4093 )
+texture_scale = 0.5
+color = Color( 0.32549, 1, 0.984314, 1 )
+energy = 0.0
+
+[node name="Tween" type="Tween" parent="."]
 
 [connection signal="area_entered" from="RepelArea" to="." method="_on_RepelArea_area_entered"]
-[connection signal="timeout" from="RepelTimer" to="." method="_on_RepelTimer_timeout"]
+[connection signal="tween_completed" from="Tween" to="." method="_on_Tween_tween_completed"]

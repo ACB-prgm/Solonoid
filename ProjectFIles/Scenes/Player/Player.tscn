@@ -49,6 +49,7 @@ position = Vector2( 0, -70 )
 [node name="FrontRightTrail" parent="LineTrails" instance=ExtResource( 6 )]
 position = Vector2( 50, -20 )
 MAX_POINTS = 4
+light_color = Color( 0.329412, 1, 0.980392, 1 )
 
 [node name="FrontLeftTrail" parent="LineTrails" instance=ExtResource( 6 )]
 position = Vector2( -50, -20 )

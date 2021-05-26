@@ -61,7 +61,8 @@ color = Color( 0.580392, 0.976471, 1, 1 )
 energy = 2.0
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-scale = Vector2( 0.4, 0.4 )
+modulate = Color( 0.329412, 1, 0.980392, 1 )
+scale = Vector2( 0.5, 0.5 )
 frames = SubResource( 8 )
 
 [node name="Particles2D_Plus" type="Particles2D" parent="."]
@@ -75,5 +76,7 @@ script = ExtResource( 4 )
 one_shot_start = true
 
 [node name="Tween" type="Tween" parent="."]
+
+[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
 
 [connection signal="particles_cycle_finished" from="Particles2D_Plus" to="." method="_on_Particles2D_Plus_particles_cycle_finished"]

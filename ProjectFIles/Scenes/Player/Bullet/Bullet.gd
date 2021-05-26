@@ -27,7 +27,9 @@ func _physics_process(delta):
 func _on_Area2D_area_entered(_area):
 	die()
 
-func _on_Area2D_body_entered(_body):
+func _on_Area2D_body_entered(body):
+	if body.has_method("take_damage"):
+		body.take_damage(damage, body.global_position.direction_to(global_position))
 	die()
 
 func _on_VisibilityNotifier2D_screen_exited():
@@ -39,6 +41,7 @@ func die(offscreen = false):
 		dead = true
 		
 		set_deferred("monitorable", false) # stops causing damage
+		damage = 0
 		set_physics_process(false) # stops movement
 		
 		$Bullet.hide()
