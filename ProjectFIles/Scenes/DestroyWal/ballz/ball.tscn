@@ -1,0 +1,32 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Images/Ball.png" type="Texture" id=1]
+[ext_resource path="res://Images/Ball_n.png" type="Texture" id=2]
+[ext_resource path="res://Scenes/DestroyWal/ballz/ball.gd" type="Script" id=3]
+
+[node name="TextureRect" type="Control"]
+margin_right = 50.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 50, 50 )
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite" type="Sprite" parent="."]
+modulate = Color( 0.101961, 0.101961, 0.109804, 1 )
+texture = ExtResource( 1 )
+normal_map = ExtResource( 2 )
+offset = Vector2( 25, 25 )
+
+[node name="Light2D" type="Light2D" parent="Sprite"]
+texture = ExtResource( 1 )
+offset = Vector2( 25, 25 )
+color = Color( 0.901961, 0.2, 0.2, 1 )
+energy = 2.0
+
+[node name="Tween" type="Tween" parent="."]
+
+[connection signal="tween_all_completed" from="Tween" to="." method="_on_Tween_tween_all_completed"]
