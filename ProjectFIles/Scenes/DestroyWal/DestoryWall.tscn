@@ -1,20 +1,28 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Scenes/DestroyWal/DestoryWall.gd" type="Script" id=1]
+[ext_resource path="res://Images/DestoryWallLight.png" type="Texture" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 250, 0 )
+extents = Vector2( 344.5, 50 )
 
 [node name="DestoryWall" type="StaticBody2D"]
 collision_layer = 4
 collision_mask = 7
 script = ExtResource( 1 )
+wall_width = 275
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CollisionShape2D"]
+custom_constants/separation = 0
 alignment = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Light2D" type="Light2D" parent="CollisionShape2D"]
+texture = ExtResource( 2 )
+color = Color( 0.901961, 0.2, 0.2, 1 )
+energy = 0.5

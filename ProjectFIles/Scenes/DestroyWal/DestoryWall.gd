@@ -2,13 +2,14 @@ tool
 extends StaticBody2D
 
 
-export var balls = 10
-export var shape_extents = Vector2(250, 100) setget set_shape_extents
+export var num_walls = 2 setget set_wall_height
+export var wall_width = 250 setget set_wall_width
+export var balls_per_wall = 10
 
 onready var collshape = $CollisionShape2D
 onready var ball_vbox = $CollisionShape2D/VBoxContainer
-onready var balls_per_hbox = int(collshape.shape.extents.x / 50)
-onready var num_walls = balls/balls_per_hbox
+onready var light = $CollisionShape2D/Light2D
+onready var balls = balls_per_wall * num_walls
 
 var ball_TSCN = preload("res://Scenes/DestroyWal/ballz/ball.tscn")
 
@@ -20,27 +21,38 @@ func _ready():
 
 
 func set_ball_vbox():
-	collshape.shape.extents.y = num_walls * 50
+	collshape.shape.extents.y = num_walls * 25 # 1/2 size of one ball + hbox separation
 	ball_vbox.rect_size = collshape.shape.extents * 2.0
 	ball_vbox.rect_pivot_offset = ball_vbox.rect_size / 2.0
 	ball_vbox.rect_position = ball_vbox.rect_pivot_offset * -1
+	
+	light.scale = collshape.shape.extents / 10
 
 
-func set_shape_extents(new_val):
-	shape_extents = new_val
-	collshape.shape.extents = new_val
+func set_wall_width(new_val):
+	if Engine.editor_hint:
+		if new_val < wall_width:
+			wall_width -= 25
+		else:
+			wall_width += 25
+
+		self.balls_per_wall = int(wall_width / 25)
+		collshape.shape.extents.x = wall_width + balls_per_wall * 1.5 # spacing of hbx
+		collshape.shape.extents.y = num_walls * 25
+
+
+func set_wall_height(new_val):
+	num_walls = new_val
+	collshape.shape.extents.y = num_walls * 25
 
 
 func create_walls():
-	if balls % balls_per_hbox != 0:
-		num_walls += 1
-	
 	for _wall in range(num_walls):
 		var ball_hbox := HBoxContainer.new()
 		ball_hbox.alignment = BoxContainer.ALIGN_CENTER
 		ball_vbox.add_child(ball_hbox)
 		
-		for _ball in range(balls_per_hbox):
+		for _ball in range(balls_per_wall):
 			if balls > 0:
 				var ball_ins = ball_TSCN.instance()
 				ball_hbox.add_child(ball_ins)

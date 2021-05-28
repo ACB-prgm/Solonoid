@@ -70,6 +70,13 @@ func _repel():
 		state = SEEK
 
 
+func _on_RepelArea_body_entered(body):
+	repel = body 
+	repel_force = rand_range(10, 40)
+	repel_distance = rand_range(150, 300)
+	
+	state = REPEL
+
 func _on_RepelArea_area_entered(area):
 	repel = area 
 	repel_force = rand_range(10, 40)
@@ -119,16 +126,16 @@ func die():
 		dead = true
 		
 		tween.interpolate_property(thrusterSound, "pitch_scale", 
-		null, 20.0 + rand_range(-2, 2), 
-		.15, Tween.TRANS_EXPO, Tween.EASE_IN)
+		null, 10 + rand_range(-2, 2), 
+		.1, Tween.TRANS_EXPO, Tween.EASE_IN)
 		tween.interpolate_property(thrusterSound, "volume_db", 
 		null, clamp(thrusterSound.volume_db + 5, 0.0, 10.0), 
-		.15, Tween.TRANS_EXPO, Tween.EASE_IN)
+		.1, Tween.TRANS_EXPO, Tween.EASE_IN)
 		
 		tween.interpolate_property(onLight, "energy", 
-		null, 50, .15, Tween.TRANS_EXPO, Tween.EASE_IN)
+		null, 10, .1, Tween.TRANS_EXPO, Tween.EASE_IN)
 		tween.interpolate_property(onLight, "range_height", 
-		null, 100, .15, Tween.TRANS_EXPO, Tween.EASE_IN)
+		null, 100, .1, Tween.TRANS_EXPO, Tween.EASE_IN)
 		
 		tween.start()
 

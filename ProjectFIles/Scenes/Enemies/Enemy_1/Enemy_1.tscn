@@ -39,7 +39,7 @@ polygon = PoolVector2Array( 0.175003, -55.95, 39.425, 43.925, 0.425003, 65.425, 
 
 [node name="RepelArea" type="Area2D" parent="."]
 collision_layer = 32
-collision_mask = 32
+collision_mask = 48
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RepelArea"]
 visible = false
@@ -70,4 +70,5 @@ energy = 0.0
 [node name="Tween" type="Tween" parent="."]
 
 [connection signal="area_entered" from="RepelArea" to="." method="_on_RepelArea_area_entered"]
+[connection signal="body_entered" from="RepelArea" to="." method="_on_RepelArea_body_entered"]
 [connection signal="tween_completed" from="Tween" to="." method="_on_Tween_tween_completed"]
