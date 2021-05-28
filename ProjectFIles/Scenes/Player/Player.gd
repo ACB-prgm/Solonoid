@@ -3,6 +3,7 @@ extends KinematicBody2D
 
 const MAX_SPEED := 750
 const ACCELERATION := 30
+const KNOCKBACK_FORCE = 100
 
 onready var shootTimer = $ShootTimer
 onready var barrelPos = $BarrelPosition2D
@@ -53,6 +54,8 @@ func shoot():
 		can_shoot = false
 		shootTimer.start()
 		
+		Globals.camera.shake(100, 0.18, 100, 6.5)
+		velocity += Vector2.RIGHT.rotated(rotation + deg2rad(90)) * KNOCKBACK_FORCE
 		muzzleFlash.flash()
 		
 		var bullet_ins = bullet_TSCN.instance()

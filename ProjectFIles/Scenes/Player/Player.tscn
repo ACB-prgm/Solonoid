@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Images/ship_sidesB.png" type="Texture" id=1]
 [ext_resource path="res://Scenes/Player/Player.gd" type="Script" id=2]
@@ -6,9 +6,17 @@
 [ext_resource path="res://Scenes/Player/MuzzleFlash/MuzzleFlash.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Images/PlayerShipNormal.png" type="Texture" id=5]
 [ext_resource path="res://Scenes/Player/LineTrail.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Scenes/Player/Camera2D.gd" type="Script" id=7]
+[ext_resource path="res://Scenes/Player/ChromaticAbberation.shader" type="Shader" id=8]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 48.0536
+
+[sub_resource type="ShaderMaterial" id=2]
+shader = ExtResource( 8 )
+shader_param/scale = 0.0
+shader_param/max_scale = 10.0
+shader_param/intensity = 2.0
 
 [node name="KinematicBody2D" type="KinematicBody2D"]
 script = ExtResource( 2 )
@@ -24,9 +32,25 @@ shape = SubResource( 1 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
-zoom = Vector2( 1.5, 1.5 )
+zoom = Vector2( 1.75, 1.75 )
 smoothing_enabled = true
 smoothing_speed = 7.5
+script = ExtResource( 7 )
+
+[node name="Timer" type="Timer" parent="Camera2D"]
+one_shot = true
+
+[node name="Tween" type="Tween" parent="Camera2D"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Camera2D"]
+
+[node name="ColorRect" type="ColorRect" parent="Camera2D/CanvasLayer"]
+material = SubResource( 2 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="ShootTimer" type="Timer" parent="."]
 wait_time = 0.2
@@ -63,4 +87,5 @@ MAX_POINTS = 5
 position = Vector2( 45, 45 )
 MAX_POINTS = 5
 
+[connection signal="timeout" from="Camera2D/Timer" to="Camera2D" method="_on_Timer_timeout"]
 [connection signal="timeout" from="ShootTimer" to="." method="_on_ShootTimer_timeout"]
