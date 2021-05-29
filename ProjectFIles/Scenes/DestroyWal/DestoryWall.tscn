@@ -4,13 +4,12 @@
 [ext_resource path="res://Images/DestoryWallLight.png" type="Texture" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 344.5, 50 )
+extents = Vector2( 318, 50 )
 
 [node name="DestoryWall" type="StaticBody2D"]
 collision_layer = 4
 collision_mask = 7
 script = ExtResource( 1 )
-wall_width = 275
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
@@ -23,6 +22,11 @@ __meta__ = {
 }
 
 [node name="Light2D" type="Light2D" parent="CollisionShape2D"]
+scale = Vector2( 13.25, 5 )
 texture = ExtResource( 2 )
+texture_scale = 1.5
 color = Color( 0.901961, 0.2, 0.2, 1 )
-energy = 0.5
+
+[node name="Tween" type="Tween" parent="."]
+
+[connection signal="tween_all_completed" from="Tween" to="." method="_on_Tween_tween_all_completed"]

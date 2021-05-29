@@ -18,7 +18,7 @@ shader_param/scale = 0.0
 shader_param/max_scale = 10.0
 shader_param/intensity = 2.0
 
-[node name="KinematicBody2D" type="KinematicBody2D"]
+[node name="Player" type="KinematicBody2D"]
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
@@ -73,7 +73,6 @@ position = Vector2( 0, -70 )
 [node name="FrontRightTrail" parent="LineTrails" instance=ExtResource( 6 )]
 position = Vector2( 50, -20 )
 MAX_POINTS = 4
-light_color = Color( 0.329412, 1, 0.980392, 1 )
 
 [node name="FrontLeftTrail" parent="LineTrails" instance=ExtResource( 6 )]
 position = Vector2( -50, -20 )

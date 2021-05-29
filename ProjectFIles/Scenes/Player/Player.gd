@@ -22,6 +22,7 @@ func _ready():
 
 
 func _physics_process(_delta):
+#	print(Performance.get_monitor(Performance.TIME_FPS))
 	movement()
 	aim()
 	shoot()
@@ -43,7 +44,7 @@ func movement():
 	thrusterAudio.pitch_scale = lerp(1.5, 2.5, thrusT)
 	for trail in lineTrails:
 		trail.set_thrust(thrusT)
-	
+
 # warning-ignore:return_value_discarded
 	move_and_slide(velocity)
 

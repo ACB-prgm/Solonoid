@@ -90,7 +90,7 @@ func thruster_sounds():
 		if target and is_instance_valid(target):
 			var nearness = 200/global_position.distance_to(target.global_position)
 			nearness = clamp(nearness, 0.0, 1.0)
-			thrusterSound.volume_db = lerp(-10.0, 8.0, nearness)
+			thrusterSound.volume_db = lerp(-7.0, 8.0, nearness)
 		
 		if desired and velocity:
 			var thrust = (desired - velocity).length() / 1200
@@ -129,7 +129,7 @@ func die():
 		null, 10 + rand_range(-2, 2), 
 		.1, Tween.TRANS_EXPO, Tween.EASE_IN)
 		tween.interpolate_property(thrusterSound, "volume_db", 
-		null, clamp(thrusterSound.volume_db + 5, 0.0, 10.0), 
+		null, clamp(thrusterSound.volume_db + 5, 0.0, 20.0), 
 		.1, Tween.TRANS_EXPO, Tween.EASE_IN)
 		
 		tween.interpolate_property(onLight, "energy", 

@@ -17,9 +17,8 @@ albedo_texture = SubResource( 2 )
 
 [sub_resource type="Environment" id=4]
 glow_enabled = true
-glow_intensity = 0.1
-glow_blend_mode = 0
-glow_bicubic_upscale = true
+glow_strength = 0.9
+glow_blend_mode = 1
 
 [node name="Spatial" type="Spatial"]
 script = ExtResource( 2 )

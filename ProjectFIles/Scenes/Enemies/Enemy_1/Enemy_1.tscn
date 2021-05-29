@@ -25,7 +25,8 @@ scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 1 )
 normal_map = ExtResource( 2 )
 
-[node name="Position2D" parent="." instance=ExtResource( 3 )]
+[node name="Trail" parent="." instance=ExtResource( 3 )]
+modulate = Color( 1.15, 1.1, 1.1, 1 )
 position = Vector2( -50, 0 )
 rotation = 1.5708
 line_thickness = 20

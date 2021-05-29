@@ -4,24 +4,24 @@
 [ext_resource path="res://Scenes/Player/LineTrailpos.gd" type="Script" id=2]
 [ext_resource path="res://Images/LightingTest2.png" type="Texture" id=3]
 
-[sub_resource type="Gradient" id=1]
-offsets = PoolRealArray( 0, 0.868421, 1 )
-colors = PoolColorArray( 0.826638, 1, 0.995968, 1, 0.666667, 1, 0.764706, 0, 0.666667, 1, 0.764706, 0 )
+[sub_resource type="Gradient" id=3]
+offsets = PoolRealArray( 0, 0.273026, 0.980263 )
+colors = PoolColorArray( 0.919378, 1, 0.997643, 1, 0.64987, 1, 0.989762, 1, 0.65098, 1, 0.988235, 0 )
 
 [sub_resource type="Curve" id=2]
 _data = [ Vector2( 0.00255102, 1 ), 0.0, -0.693693, 0, 0, Vector2( 1, 0.27027 ), -0.252252, 0.0, 0, 0 ]
 
-[node name="Position2D" type="Position2D"]
+[node name="LineTrail" type="Position2D"]
 script = ExtResource( 2 )
-line_gradient = SubResource( 1 )
+line_gradient = SubResource( 3 )
+light_color = Color( 0.32549, 1, 0.984314, 1 )
 
 [node name="Line2D" type="Line2D" parent="."]
-modulate = Color( 1.1, 1.1, 1.5, 1 )
+modulate = Color( 1.1, 1.1, 1.15, 1 )
 show_behind_parent = true
-z_index = -1
 width_curve = SubResource( 2 )
 default_color = Color( 0.32549, 1, 0.984314, 1 )
-gradient = SubResource( 1 )
+gradient = SubResource( 3 )
 antialiased = true
 script = ExtResource( 1 )
 
