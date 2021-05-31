@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Scenes/Levels/Level1/Level_1.gd" type="Script" id=1]
+[ext_resource path="res://Scenes/EndLevelPortal/Portal.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scenes/TileMapBasic.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scenes/Decorative/Crystal/Crystal.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Images/Grid.png" type="Texture" id=6]
@@ -165,6 +166,9 @@ position = Vector2( 5312, -2624 )
 
 [node name="Crystal11" parent="Lights" instance=ExtResource( 5 )]
 position = Vector2( 4928, -5440 )
+
+[node name="Portal" parent="." instance=ExtResource( 2 )]
+position = Vector2( 4928, -5184 )
 
 [node name="Player" parent="." instance=ExtResource( 7 )]
 position = Vector2( 64, 192 )

@@ -17,6 +17,8 @@ var bullet_TSCN = preload("res://Scenes/Player/Bullet/Bullet.tscn")
 var can_shoot := true
 var input_vector: Vector2
 var velocity: Vector2
+var aim_input_dir: Vector2
+var aim_dir = Vector2.UP
 
 
 func _ready():
@@ -63,7 +65,7 @@ func movement():
 
 # SHOOT FUNCTIONS ——————————————————————————————————————————————————————————————
 func shoot():
-	if Input.is_action_pressed("shoot") and can_shoot:
+	if can_shoot and (Input.is_action_pressed("shoot") or (Globals.shoot_on_aim and aim_input_dir)):
 		
 		can_shoot = false
 		shootTimer.start()
@@ -87,10 +89,17 @@ func _on_ShootTimer_timeout():
 
 # AIMING FUNCTIONS —————————————————————————————————————————————————————————————
 func aim():
-	var look_dir = global_position.direction_to(get_global_mouse_position())
-	var aim_rot = look_dir.angle() + deg2rad(90)
+	aim_input_dir.x = Input.get_action_strength("aim_right") - Input.get_action_strength("aim_left")
+	aim_input_dir.y = Input.get_action_strength("aim_down") - Input.get_action_strength("aim_up")
+	aim_input_dir = aim_input_dir.normalized()
+	
+	if aim_input_dir:
+		aim_dir = aim_input_dir
+	
+#	aim_dir = global_position.direction_to(get_global_mouse_position())
+	var aim_rot = aim_dir.angle() + deg2rad(90) # adjust for sprite rot
 
-	rotation = _lerp_angle(rotation, aim_rot, 0.15)
+	rotation = _lerp_angle(rotation, aim_rot, 0.075) 
 
 func _lerp_angle(from, to, weight):
 	return from + short_angle_dist(from, to) * weight
@@ -103,5 +112,5 @@ func short_angle_dist(from, to):
 
 func _on_Tween_tween_all_completed():
 	set_physics_process(true)
-	Globals.camera.shake(150, 0.3, 150, 6.5)
+	Globals.camera.shake(500, 0.3, 500, 8)
 	$LineTrails.show()

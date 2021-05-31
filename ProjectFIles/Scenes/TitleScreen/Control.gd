@@ -3,7 +3,7 @@ extends Control
 
 const RADIUS = 100
 
-onready var background = $BG
+onready var background = $Lights_BG/BG
 
 var dir: Vector2
 var start_pos: Vector2
@@ -53,3 +53,7 @@ func _on_PlayButton_TextButton_Pressed():
 	Music._out()
 	
 	set_process(false)
+
+
+func _on_ControlsButton_TextButton_Pressed():
+	pass # Replace with function body.

@@ -7,11 +7,13 @@ signal particlesCached
 var bulletParticles = preload("res://Scenes/Autoloads/Materials/PlayerBullet.tres")
 var bulletImpactParticles = preload("res://Scenes/Autoloads/Materials/BulletImpactParticles.tres")
 var enemyExplosionShards = preload("res://Scenes/Autoloads/Materials/EnemyExplosionShards.tres")
+var portalParticles = preload("res://Scenes/Autoloads/Materials/PortalParticles.tres")
 
 var materials = [
 	bulletParticles,
 	bulletImpactParticles,
-	enemyExplosionShards
+	enemyExplosionShards,
+	portalParticles
 ]
 
 

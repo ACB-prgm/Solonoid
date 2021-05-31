@@ -72,7 +72,8 @@ tracks/4/keys = {
 }
 
 [node name="Crystal" type="Node2D"]
-scale = Vector2( 1.17918, 1.17918 )
+scale = Vector2( 1.2, 1.2 )
+z_index = 1
 
 [node name="Crystal" type="Light2D" parent="."]
 texture = ExtResource( 3 )
