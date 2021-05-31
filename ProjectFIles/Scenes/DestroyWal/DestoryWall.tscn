@@ -22,10 +22,13 @@ __meta__ = {
 }
 
 [node name="Light2D" type="Light2D" parent="CollisionShape2D"]
+position = Vector2( -496.851, -188.15 )
 scale = Vector2( 13.25, 5 )
 texture = ExtResource( 2 )
+offset = Vector2( 37.4982, 37.63 )
 texture_scale = 1.5
 color = Color( 0.901961, 0.2, 0.2, 1 )
+energy = 0.5
 
 [node name="Tween" type="Tween" parent="."]
 

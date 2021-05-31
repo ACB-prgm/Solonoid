@@ -1,0 +1,118 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Fonts/JetBrainsMono-Medium.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://Scenes/TitleScreen/TextButton.gd" type="Script" id=2]
+
+[sub_resource type="DynamicFont" id=1]
+size = 160
+outline_size = 3
+outline_color = Color( 0.65098, 1, 0.988235, 1 )
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 1 )
+
+[sub_resource type="Animation" id=2]
+resource_name = "hover"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:custom_fonts/font:outline_color")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0.65098, 1, 0.988235, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:custom_colors/font_color")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 0.65098, 1, 0.988235, 1 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "unhover"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:custom_fonts/font:outline_color")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 0.65098, 1, 0.988235, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:custom_colors/font_color")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0.65098, 1, 0.988235, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[node name="TextButton" type="Label"]
+margin_right = 288.0
+margin_bottom = 48.0
+rect_pivot_offset = Vector2( 288, 106 )
+focus_mode = 2
+mouse_filter = 1
+size_flags_vertical = 1
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_shadow = Color( 0.501961, 0.501961, 0.54902, 1 )
+custom_constants/shadow_offset_x = 4
+custom_constants/shadow_offset_y = 4
+text = "Button"
+align = 1
+uppercase = true
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": ""
+}
+
+[node name="Button" type="Button" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -10.0
+margin_top = -10.0
+margin_right = 10.0
+margin_bottom = 10.0
+focus_mode = 0
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HoverSound" type="AudioStreamPlayer" parent="."]
+volume_db = -10.0
+bus = "SoundEffects"
+
+[node name="ClickSound" type="AudioStreamPlayer" parent="."]
+volume_db = -10.0
+bus = "SoundEffects"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/hover = SubResource( 2 )
+anims/unhover = SubResource( 3 )
+
+[connection signal="mouse_entered" from="Button" to="." method="_on_Button_mouse_entered"]
+[connection signal="mouse_exited" from="Button" to="." method="_on_Button_mouse_exited"]
+[connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]

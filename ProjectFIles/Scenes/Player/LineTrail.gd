@@ -12,7 +12,7 @@ var frame := 0
 func _ready():
 	yield(get_tree().create_timer(0.01), "timeout")
 	parent.call_deferred("remove_child", self)
-	Globals.current_2D_scene.call_deferred("add_child", self)
+	Globals._2DWorld.call_deferred("add_child", self)
 
 
 func _physics_process(_delta):

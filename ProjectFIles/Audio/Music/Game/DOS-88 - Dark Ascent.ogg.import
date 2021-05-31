@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/DOS-88 - Dark Ascent.ogg-c67d5a1568fd1c2099ed412ac08ab270.oggstr"
+
+[deps]
+
+source_file="res://Audio/Music/Game/DOS-88 - Dark Ascent.ogg"
+dest_files=[ "res://.import/DOS-88 - Dark Ascent.ogg-c67d5a1568fd1c2099ed412ac08ab270.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

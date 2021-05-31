@@ -1,5 +1,6 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
+[ext_resource path="res://Images/LightingTest2.png" type="Texture" id=1]
 [ext_resource path="res://Images/Bullet.png" type="Texture" id=2]
 [ext_resource path="res://Scenes/Player/Bullet/Bullet.gd" type="Script" id=3]
 [ext_resource path="res://Scenes/Player/Bullet/BulletTrailLine2D.gd" type="Script" id=4]
@@ -56,10 +57,9 @@ position = Vector2( 57.1875, 0 )
 
 [node name="Light2D" type="Light2D" parent="."]
 position = Vector2( 57.1875, 0 )
-texture = ExtResource( 2 )
-texture_scale = 0.6
+texture = ExtResource( 1 )
+texture_scale = 0.2
 color = Color( 0.580392, 0.976471, 1, 1 )
-energy = 0.4
 
 [node name="Tween" type="Tween" parent="."]
 

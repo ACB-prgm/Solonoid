@@ -28,7 +28,7 @@ func die():
 		var death_ins = death_TSCN.instance()
 		death_ins.global_position = sprite.global_position
 		death_ins.scale *= 0.3
-		Globals.current_2D_scene.add_child(death_ins)
+		Globals._2DWorld.add_child(death_ins)
 
 
 func _process(_delta):

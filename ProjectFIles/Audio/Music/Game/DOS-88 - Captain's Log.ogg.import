@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/DOS-88 - Captain's Log.ogg-abe16e4a3fea2ceb3e0f7631c4829a40.oggstr"
+
+[deps]
+
+source_file="res://Audio/Music/Game/DOS-88 - Captain's Log.ogg"
+dest_files=[ "res://.import/DOS-88 - Captain's Log.ogg-abe16e4a3fea2ceb3e0f7631c4829a40.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

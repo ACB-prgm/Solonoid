@@ -9,6 +9,8 @@ onready var shootTimer = $ShootTimer
 onready var barrelPos = $BarrelPosition2D
 onready var muzzleFlash = $BarrelPosition2D/MuzzleFlash
 onready var thrusterAudio = $ThrustersAudio
+onready var shootSound = $ShootSound
+onready var tween = $Tween
 onready var lineTrails = $LineTrails.get_children()
 
 var bullet_TSCN = preload("res://Scenes/Player/Bullet/Bullet.tscn")
@@ -18,6 +20,16 @@ var velocity: Vector2
 
 
 func _ready():
+	$LineTrails.hide()
+	set_physics_process(false)
+	var shader = $Sprite.get_material()
+	shader.set("shader_param/progress", 1)
+	yield(Transitioner, "_in_finished")
+	
+	tween.interpolate_property(shader, "shader_param/progress", 1.0, 0.0, 
+	1, Tween.TRANS_SINE, Tween.EASE_IN_OUT)
+	tween.start()
+	
 	Globals.player = self
 
 
@@ -52,12 +64,16 @@ func movement():
 # SHOOT FUNCTIONS ——————————————————————————————————————————————————————————————
 func shoot():
 	if Input.is_action_pressed("shoot") and can_shoot:
+		
 		can_shoot = false
 		shootTimer.start()
 		
 		Globals.camera.shake(100, 0.18, 100, 6.5)
 		velocity += Vector2.RIGHT.rotated(rotation + deg2rad(90)) * KNOCKBACK_FORCE
 		muzzleFlash.flash()
+		
+		shootSound.pitch_scale = .55 + rand_range(-0.05, 0.1)
+		shootSound.play()
 		
 		var bullet_ins = bullet_TSCN.instance()
 		bullet_ins.rotation = rotation - deg2rad(90)
@@ -83,3 +99,9 @@ func short_angle_dist(from, to):
 	var max_angle = PI * 2
 	var difference = fmod(to - from, max_angle)
 	return fmod(2 * difference, max_angle) - difference
+
+
+func _on_Tween_tween_all_completed():
+	set_physics_process(true)
+	Globals.camera.shake(150, 0.3, 150, 6.5)
+	$LineTrails.show()

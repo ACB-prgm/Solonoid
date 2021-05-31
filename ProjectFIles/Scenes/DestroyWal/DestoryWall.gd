@@ -83,8 +83,6 @@ func die():
 	var light = $CollisionShape2D/Light2D
 	tween.interpolate_property(light, "energy", 1.1, 0.0,
 	.7, Tween.TRANS_BOUNCE, Tween.EASE_IN_OUT)
-	tween.interpolate_property(light, "scale", light.scale * 1.2, Vector2.ZERO,
-	.7, Tween.TRANS_BOUNCE, Tween.EASE_IN_OUT)
 	tween.start()
 	
 	$CollisionShape2D.set_deferred("disabled", true)

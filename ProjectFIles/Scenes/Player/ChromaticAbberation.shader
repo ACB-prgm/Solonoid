@@ -5,6 +5,8 @@ uniform float scale = 0.0;
 uniform float max_scale = 10.0;
 uniform float intensity = 2.0;
 
+uniform int amount = 40;
+
 
 void fragment() {
 	vec2 offset = SCREEN_PIXEL_SIZE * scale;

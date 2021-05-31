@@ -21,4 +21,4 @@ func _ready():
 
 
 func set_thrust(thrust):
-	light.energy = lerp(0.1, 0.5, thrust)
+	light.energy = lerp(0.1, 0.7, thrust)
