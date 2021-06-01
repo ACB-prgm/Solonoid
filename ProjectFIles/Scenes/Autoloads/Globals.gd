@@ -5,13 +5,12 @@ var player
 var camera
 var _2DWorld
 var TitleScreen
-var high_score := 1000
+var high_score := 750
 
 var current_score := 0
-var current_mouse_pos := Vector2.ZERO
-var current_level := "LEVEL 1"
 var current_score_time := 0.0
 var current_attempt := 1
+var current_level := "LEVEL 1"
 var LEVELS = {
 	"LEVEL 1" : {
 		"SCENE" : preload("res://Scenes/Levels/Level1/Level_1.tscn"),

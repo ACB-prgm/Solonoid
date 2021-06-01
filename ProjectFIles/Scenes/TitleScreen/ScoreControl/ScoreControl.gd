@@ -127,3 +127,8 @@ func _on_RetryLevelButton2_TextButton_Pressed():
 	Globals.current_attempt += 1
 	Transitioner._out("res://Scenes/Levels/Level1/Level_1.tscn", true)
 	Music._out()
+
+
+func _on_TextButton_TextButton_Pressed():
+	Transitioner.change_title_page("TITLE")
+	Music._out()

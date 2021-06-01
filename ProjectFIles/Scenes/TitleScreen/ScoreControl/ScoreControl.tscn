@@ -6,10 +6,10 @@
 [ext_resource path="res://Scenes/TitleScreen/ScoreControl/ScoreControl.gd" type="Script" id=4]
 [ext_resource path="res://Scenes/TitleScreen/TextButton.tscn" type="PackedScene" id=5]
 
-[sub_resource type="CanvasItemMaterial" id=7]
+[sub_resource type="CanvasItemMaterial" id=1]
 blend_mode = 1
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=2]
 length = 2.0
 loop = true
 tracks/0/type = "value"
@@ -73,7 +73,7 @@ tracks/4/keys = {
 "values": [ 0.0, 180.0 ]
 }
 
-[sub_resource type="Animation" id=9]
+[sub_resource type="Animation" id=3]
 length = 2.0
 loop = true
 tracks/0/type = "value"
@@ -137,7 +137,7 @@ tracks/4/keys = {
 "values": [ 0.0, 180.0 ]
 }
 
-[sub_resource type="Shader" id=1]
+[sub_resource type="Shader" id=4]
 code = "shader_type canvas_item;
 
 float grid(vec2 uv, float velocity, float iTime)
@@ -179,10 +179,10 @@ void fragment()
       
 }"
 
-[sub_resource type="ShaderMaterial" id=2]
-shader = SubResource( 1 )
+[sub_resource type="ShaderMaterial" id=5]
+shader = SubResource( 4 )
 
-[sub_resource type="DynamicFont" id=3]
+[sub_resource type="DynamicFont" id=6]
 size = 288
 outline_size = 3
 outline_color = Color( 0.65098, 1, 0.988235, 1 )
@@ -190,7 +190,7 @@ use_mipmaps = true
 use_filter = true
 font_data = ExtResource( 1 )
 
-[sub_resource type="DynamicFont" id=4]
+[sub_resource type="DynamicFont" id=7]
 size = 144
 outline_size = 3
 outline_color = Color( 0.65098, 1, 0.988235, 1 )
@@ -198,7 +198,7 @@ use_mipmaps = true
 use_filter = true
 font_data = ExtResource( 1 )
 
-[sub_resource type="StyleBoxFlat" id=5]
+[sub_resource type="StyleBoxFlat" id=8]
 bg_color = Color( 0.6, 0.6, 0.6, 0 )
 border_width_left = 10
 border_width_top = 10
@@ -206,7 +206,7 @@ border_width_right = 10
 border_width_bottom = 10
 border_color = Color( 0.329412, 1, 0.980392, 1 )
 
-[sub_resource type="DynamicFont" id=6]
+[sub_resource type="DynamicFont" id=9]
 size = 144
 outline_size = 3
 outline_color = Color( 0.65098, 1, 0.988235, 1 )
@@ -242,10 +242,10 @@ energy = 2.0
 range_layer_max = 1
 
 [node name="Sprite" parent="Lights_BG/Node2D/Crystal" index="1"]
-material = SubResource( 7 )
+material = SubResource( 1 )
 
 [node name="AnimationPlayer" parent="Lights_BG/Node2D/Crystal" index="3"]
-anims/Hover = SubResource( 8 )
+anims/Hover = SubResource( 2 )
 
 [node name="Crystal2" parent="Lights_BG/Node2D" instance=ExtResource( 2 )]
 position = Vector2( 2133.33, 213.333 )
@@ -255,13 +255,13 @@ energy = 2.0
 range_layer_max = 1
 
 [node name="Sprite" parent="Lights_BG/Node2D/Crystal2" index="1"]
-material = SubResource( 7 )
+material = SubResource( 1 )
 
 [node name="AnimationPlayer" parent="Lights_BG/Node2D/Crystal2" index="3"]
-anims/Hover = SubResource( 9 )
+anims/Hover = SubResource( 3 )
 
 [node name="ColorRect" type="ColorRect" parent="."]
-material = SubResource( 2 )
+material = SubResource( 5 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 __meta__ = {
@@ -276,7 +276,7 @@ margin_top = 56.0
 margin_right = 1072.0
 margin_bottom = 411.0
 rect_pivot_offset = Vector2( 439, 177 )
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 6 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_shadow = Color( 0.5, 0.5, 0.55, 1 )
 custom_constants/shadow_offset_x = 7
@@ -305,7 +305,7 @@ __meta__ = {
 [node name="HighScoreLabel" type="Label" parent="VBoxContainer"]
 margin_right = 3840.0
 margin_bottom = 178.0
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 7 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_shadow = Color( 0.5, 0.5, 0.55, 1 )
 custom_constants/shadow_offset_x = 7
@@ -321,7 +321,7 @@ __meta__ = {
 margin_top = 182.0
 margin_right = 3840.0
 margin_bottom = 360.0
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 7 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_shadow = Color( 0.5, 0.5, 0.55, 1 )
 custom_constants/shadow_offset_x = 7
@@ -342,7 +342,7 @@ margin_left = -1920.0
 margin_top = -240.0
 margin_right = 1920.0
 margin_bottom = -62.0
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 7 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_shadow = Color( 0.5, 0.5, 0.55, 1 )
 custom_constants/shadow_offset_x = 7
@@ -363,7 +363,7 @@ margin_left = -648.25
 margin_top = -48.0
 margin_right = 648.25
 margin_bottom = 338.0
-custom_styles/panel = SubResource( 5 )
+custom_styles/panel = SubResource( 8 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -385,7 +385,7 @@ columns = 3
 [node name="TimeLabel" type="Label" parent="PanelContainer/CenterContainer/MultipliersGridContainer"]
 margin_right = 641.0
 margin_bottom = 178.0
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = SubResource( 9 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_shadow = Color( 0.5, 0.5, 0.55, 1 )
 custom_constants/shadow_offset_x = 7
@@ -401,7 +401,7 @@ __meta__ = {
 margin_left = 691.0
 margin_right = 952.0
 margin_bottom = 178.0
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = SubResource( 9 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_shadow = Color( 0.5, 0.5, 0.55, 1 )
 custom_constants/shadow_offset_x = 7
@@ -417,7 +417,7 @@ __meta__ = {
 margin_left = 1002.0
 margin_right = 1159.0
 margin_bottom = 178.0
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = SubResource( 9 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_shadow = Color( 0.5, 0.5, 0.55, 1 )
 custom_constants/shadow_offset_x = 7
@@ -432,7 +432,7 @@ __meta__ = {
 margin_top = 188.0
 margin_right = 641.0
 margin_bottom = 366.0
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = SubResource( 9 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_shadow = Color( 0.5, 0.5, 0.55, 1 )
 custom_constants/shadow_offset_x = 7
@@ -449,7 +449,7 @@ margin_left = 691.0
 margin_top = 188.0
 margin_right = 952.0
 margin_bottom = 366.0
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = SubResource( 9 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_shadow = Color( 0.5, 0.5, 0.55, 1 )
 custom_constants/shadow_offset_x = 7
@@ -466,13 +466,34 @@ margin_left = 1002.0
 margin_top = 188.0
 margin_right = 1159.0
 margin_bottom = 366.0
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = SubResource( 9 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_shadow = Color( 0.5, 0.5, 0.55, 1 )
 custom_constants/shadow_offset_x = 7
 custom_constants/shadow_offset_y = 7
 text = "x1"
 align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LevelScoreLabel" type="Label" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -1920.0
+margin_top = 336.0
+margin_right = 1920.0
+margin_bottom = 514.0
+custom_fonts/font = SubResource( 7 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_shadow = Color( 0.5, 0.5, 0.55, 1 )
+custom_constants/shadow_offset_x = 7
+custom_constants/shadow_offset_y = 7
+text = "level score : 000"
+align = 1
+uppercase = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -499,30 +520,18 @@ text = "Retry"
 align = 0
 valign = 1
 
-[node name="LevelScoreLabel" type="Label" parent="."]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -1920.0
-margin_top = 336.0
-margin_right = 1920.0
-margin_bottom = 514.0
-custom_fonts/font = SubResource( 4 )
-custom_colors/font_color = Color( 1, 1, 1, 1 )
-custom_colors/font_color_shadow = Color( 0.5, 0.5, 0.55, 1 )
-custom_constants/shadow_offset_x = 7
-custom_constants/shadow_offset_y = 7
-text = "level score : 000"
-align = 1
-uppercase = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="TextButton" parent="." instance=ExtResource( 5 )]
+margin_left = 3248.0
+margin_top = 648.0
+margin_right = 3728.0
+margin_bottom = 860.0
+rect_pivot_offset = Vector2( 240, 106 )
+text = "Title"
 
 [connection signal="tween_step" from="Tween" to="." method="_on_Tween_tween_step"]
 [connection signal="TextButton_Pressed" from="NextLevelButton" to="." method="_on_NextLevelButton_TextButton_Pressed"]
 [connection signal="TextButton_Pressed" from="RetryLevelButton2" to="." method="_on_RetryLevelButton2_TextButton_Pressed"]
+[connection signal="TextButton_Pressed" from="TextButton" to="." method="_on_TextButton_TextButton_Pressed"]
 
 [editable path="Lights_BG/Node2D/Crystal"]
 [editable path="Lights_BG/Node2D/Crystal2"]

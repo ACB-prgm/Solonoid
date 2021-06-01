@@ -7,7 +7,7 @@
 [ext_resource path="res://Fonts/Flat-it - BioSans-Regular.otf" type="DynamicFontData" id=6]
 [ext_resource path="res://Scenes/Decorative/Crystal/Crystal.tscn" type="PackedScene" id=8]
 
-[sub_resource type="Shader" id=5]
+[sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
 
 float grid(vec2 uv, float velocity, float iTime)
@@ -50,7 +50,7 @@ void fragment()
 }"
 
 [sub_resource type="ShaderMaterial" id=2]
-shader = SubResource( 5 )
+shader = SubResource( 1 )
 
 [sub_resource type="DynamicFont" id=3]
 size = 288
@@ -68,7 +68,7 @@ use_mipmaps = true
 use_filter = true
 font_data = ExtResource( 5 )
 
-[sub_resource type="StyleBoxFlat" id=6]
+[sub_resource type="StyleBoxFlat" id=5]
 bg_color = Color( 0, 0.0705882, 0.145098, 1 )
 border_width_left = 8
 border_width_top = 8
@@ -76,7 +76,7 @@ border_width_right = 8
 border_width_bottom = 8
 border_color = Color( 1, 1, 1, 1 )
 
-[sub_resource type="DynamicFont" id=7]
+[sub_resource type="DynamicFont" id=6]
 size = 80
 use_mipmaps = true
 use_filter = true
@@ -176,7 +176,7 @@ margin_left = 96.0
 margin_top = -176.0
 margin_right = 926.0
 margin_bottom = -56.0
-custom_styles/panel = SubResource( 6 )
+custom_styles/panel = SubResource( 5 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -186,7 +186,7 @@ margin_left = 8.0
 margin_top = 8.0
 margin_right = 824.0
 margin_bottom = 114.0
-custom_fonts/font = SubResource( 7 )
+custom_fonts/font = SubResource( 6 )
 text = " Music By Dos-88 "
 align = 1
 valign = 1
