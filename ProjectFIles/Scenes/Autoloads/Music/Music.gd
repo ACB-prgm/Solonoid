@@ -10,12 +10,14 @@ const SONGS = {
 		"res://Audio/Music/Game/D0S-88 - Raging Inferno.ogg",
 		"res://Audio/Music/Game/DOS-88 - Double Tap.ogg",
 	],
-	"END_LEVEL" : ["res://Audio/Music/UI/DOS-88 - City Stomper.ogg"]
+	"SCORE" : ["res://Audio/Music/UI/DOS-88 - City Stomper.ogg"]
 }
 
 onready var tween = $Tween
 onready var audioPlayer = $AudioStreamPlayer
 
+
+var current_song: String
 
 #func _ready():
 #	randomize()
@@ -24,7 +26,7 @@ onready var audioPlayer = $AudioStreamPlayer
 func _in(song, time=0.5):
 	tween.stop_all()
 	
-	
+	current_song = song
 	song = SONGS.get(song)
 	if song.size() > 1:
 		song.shuffle()

@@ -12,26 +12,24 @@ onready var thrusterAudio = $ThrustersAudio
 onready var shootSound = $ShootSound
 onready var tween = $Tween
 onready var lineTrails = $LineTrails.get_children()
+onready var shader = $Sprite.get_material()
+onready var trailsNode = $LineTrails
+onready var portalAnimatedSprite = $PortalAnimatedSprite
+onready var scoreTimer = $ScoreTimer
 
 var bullet_TSCN = preload("res://Scenes/Player/Bullet/Bullet.tscn")
 var can_shoot := true
+var dead := false
+var score_time := 0.0
+var health = 3
 var input_vector: Vector2
 var velocity: Vector2
 var aim_input_dir: Vector2
-var aim_dir = Vector2.UP
+var aim_dir: Vector2
 
 
 func _ready():
-	$LineTrails.hide()
-	set_physics_process(false)
-	var shader = $Sprite.get_material()
-	shader.set("shader_param/progress", 1)
-	yield(Transitioner, "_in_finished")
-	
-	tween.interpolate_property(shader, "shader_param/progress", 1.0, 0.0, 
-	1, Tween.TRANS_SINE, Tween.EASE_IN_OUT)
-	tween.start()
-	
+	portal()
 	Globals.player = self
 
 
@@ -95,6 +93,10 @@ func aim():
 	
 	if aim_input_dir:
 		aim_dir = aim_input_dir
+	elif input_vector:
+		aim_dir = input_vector
+	else:
+		aim_dir = Vector2.UP
 	
 #	aim_dir = global_position.direction_to(get_global_mouse_position())
 	var aim_rot = aim_dir.angle() + deg2rad(90) # adjust for sprite rot
@@ -110,7 +112,58 @@ func short_angle_dist(from, to):
 	return fmod(2 * difference, max_angle) - difference
 
 
+# PORTAL FUNCTIONS (SPAWN AND DEATH) ———————————————————————————————————————————
+func portal(_in=true):
+	trailsNode.visible = !_in
+	set_physics_process(!_in)
+	
+	var start_progress = 0.3
+	if _in:
+		start_progress = 1.0
+	else:
+		thrusterAudio.volume_db = -40
+		set_physics_process(false)
+		scoreTimer.stop()
+	
+	shader.set("shader_param/progress", start_progress)
+	
+	if _in:
+		yield(Transitioner, "_in_finished")
+	
+	tween.interpolate_property(shader, "shader_param/progress", 
+	start_progress, abs(start_progress - 1.0), 
+	start_progress, Tween.TRANS_QUAD, Tween.EASE_IN)
+	
+	tween.start()
+
+
 func _on_Tween_tween_all_completed():
-	set_physics_process(true)
-	Globals.camera.shake(500, 0.3, 500, 8)
-	$LineTrails.show()
+	var _in = false
+	if shader.get("shader_param/progress") == 0.0:
+		scoreTimer.start()
+		_in = true
+	
+	set_physics_process(_in)
+	trailsNode.visible = _in
+	portalAnimatedSprite.play("", !_in)
+	
+	Globals.camera.shake(1000, 0.3, 1000, 8)
+	Globals.current_score_time = score_time
+
+
+func _on_HitboxArea2D_area_entered(area):
+	health -= 1
+	
+	if health <= 0:
+		die()
+
+func die():
+	if !dead:
+		dead = true
+		portal(false)
+
+
+# SCORE TIMER FUNCTIONS ————————————————————————————————————————————————————————
+func _on_ScoreTimer_timeout():
+	score_time += scoreTimer.wait_time
+

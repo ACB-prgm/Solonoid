@@ -1,0 +1,12 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Images/TitleBG_n.png" type="Texture" id=1]
+[ext_resource path="res://Images/TitleBG.png" type="Texture" id=2]
+[ext_resource path="res://Scenes/TitleScreen/BG.gd" type="Script" id=3]
+
+[node name="BG" type="Sprite"]
+visible = false
+position = Vector2( 1920, 1080 )
+texture = ExtResource( 2 )
+normal_map = ExtResource( 1 )
+script = ExtResource( 3 )

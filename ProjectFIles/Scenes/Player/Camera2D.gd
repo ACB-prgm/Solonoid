@@ -28,6 +28,7 @@ func shake(new_shake, shake_time=0.4, shake_limit=100, abberation=0.0):
 	shake_amount += new_shake
 	shake_amount = clamp(shake_amount, 0.0, current_shake_limit)
 	
+	shakeTimer.stop()
 	shakeTimer.wait_time = shake_time
 	shakeTimer.start()
 	
