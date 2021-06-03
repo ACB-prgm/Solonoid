@@ -12,6 +12,7 @@ var labels
 
 
 func _ready():
+	Globals.reset_run_stats()
 	highscoreLabel.modulate = Color(1,1,1,0)
 	
 	Transitioner.tween_SE_volume(false)
@@ -59,7 +60,6 @@ func _process(_delta):
 
 
 func _on_PlayButton_TextButton_Pressed():
-	print(Globals.LEVELS.get("LEVEL 1").get('SCENE'))
 	Transitioner._out(Globals.LEVELS.get("LEVEL 1").get('SCENE'), true)
 	Music._out()
 	

@@ -11,7 +11,7 @@ var current_score := 0
 var current_score_time := 0.0
 var current_attempt := 1
 var attempt_success := false
-var current_level := "LEVEL 1"
+var current_level := ""
 var LEVELS = {
 	"LEVEL 1" : {
 		"SCENE" : preload("res://Scenes/Levels/Level1/Level_1.tscn"),
@@ -34,6 +34,15 @@ var LEVELS = {
 		"BASE_SCORE" : 150
 	}
 }
+
+
+func reset_run_stats() -> void:
+	current_score = 0
+	current_score_time = 0.0
+	current_attempt = 1
+	attempt_success = false
+	current_level = ""
+
 
 # UX SETTINGS ——————————————————————————————————————————————————————————————————
 var shoot_on_aim := true

@@ -9,5 +9,9 @@ func _ready():
 	Globals.attempt_success = false
 	Music._in("GAME")
 	
-	if Globals.current_level != LEVEL:
+	prints(Globals.current_level, LEVEL)
+	if Globals.current_level == LEVEL:
+		Globals.current_attempt += 1
+	else:
+		Globals.current_level = LEVEL
 		Globals.current_attempt = 1

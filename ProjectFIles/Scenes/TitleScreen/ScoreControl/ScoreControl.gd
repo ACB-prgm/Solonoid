@@ -158,7 +158,6 @@ func _on_NextLevelButton_TextButton_Pressed():
 	var next_level = current_level.replace(str(level_int), str(level_int + 1))
 	
 	if Globals.LEVELS.has(next_level):
-		Globals.current_level = next_level
 		Transitioner._out(Globals.LEVELS.get(next_level).get("SCENE"), true)
 		Music._out()
 	else:
