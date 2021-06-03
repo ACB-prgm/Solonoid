@@ -52,9 +52,6 @@ script = ExtResource( 4 )
 visible = false
 shape = SubResource( 4 )
 
-[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
-position = Vector2( 57.1875, 0 )
-
 [node name="Light2D" type="Light2D" parent="."]
 position = Vector2( 57.1875, 0 )
 texture = ExtResource( 1 )
@@ -72,4 +69,3 @@ process_material = ExtResource( 5 )
 [connection signal="area_entered" from="." to="." method="_on_Area2D_area_entered"]
 [connection signal="body_entered" from="." to="." method="_on_Area2D_body_entered"]
 [connection signal="tween_all_completed" from="BulletTrailLine2D/Tween" to="." method="_on_LineTrail_Tween_tween_all_completed"]
-[connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]

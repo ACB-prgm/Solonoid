@@ -1,7 +1,7 @@
 extends KinematicBody2D
 
 
-export var speed = 800
+export var speed = 700
 export var steer_force = 200.0
 
 onready var thrusterSound = $ThusterSound
@@ -14,7 +14,7 @@ var velocity := Vector2.RIGHT
 var desired := Vector2.LEFT
 var acceleration := Vector2.ZERO
 var repel
-var health := 2
+var health := 1
 var repel_force: float
 var repel_distance: float
 var dead := false
@@ -25,6 +25,8 @@ enum {
 	SEEK,
 	REPEL
 }
+
+signal enemy_died
 
 
 func _ready():
@@ -146,4 +148,11 @@ func _on_Tween_tween_completed(_object, key):
 		death_ins.global_position = global_position
 		get_parent().add_child(death_ins)
 		
+		emit_signal("enemy_died")
 		queue_free()
+
+
+func _on_ExplodeArea2D_body_entered(body):
+	if body.has_method("take_damage"):
+		body.take_damage()
+		die()

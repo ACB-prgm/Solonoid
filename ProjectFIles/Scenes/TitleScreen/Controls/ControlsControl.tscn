@@ -62,7 +62,7 @@ void fragment()
 [sub_resource type="ShaderMaterial" id=3]
 shader = SubResource( 2 )
 
-[sub_resource type="DynamicFont" id=8]
+[sub_resource type="DynamicFont" id=4]
 size = 128
 outline_size = 3
 outline_color = Color( 0.65098, 1, 0.988235, 1 )
@@ -70,7 +70,7 @@ use_mipmaps = true
 use_filter = true
 font_data = ExtResource( 4 )
 
-[sub_resource type="GDScript" id=9]
+[sub_resource type="GDScript" id=5]
 script/source = "tool
 extends Label
 
@@ -113,7 +113,7 @@ func _on_Button_mouse_exited():
 		animPlayer.play(\"unhover\")
 "
 
-[sub_resource type="StyleBoxFlat" id=17]
+[sub_resource type="StyleBoxFlat" id=6]
 bg_color = Color( 0.6, 0.6, 0.6, 0 )
 border_width_left = 8
 border_width_top = 8
@@ -121,43 +121,43 @@ border_width_right = 8
 border_width_bottom = 8
 border_color = Color( 0.329412, 1, 0.980392, 1 )
 
-[sub_resource type="DynamicFontData" id=4]
+[sub_resource type="DynamicFontData" id=7]
 font_path = "res://Fonts/Flat-it - BioSans-Regular.otf"
 
-[sub_resource type="DynamicFont" id=10]
+[sub_resource type="DynamicFont" id=8]
 size = 128
 outline_size = 3
 outline_color = Color( 0.65098, 1, 0.988235, 1 )
 use_mipmaps = true
 use_filter = true
 extra_spacing_char = 20
-font_data = SubResource( 4 )
+font_data = SubResource( 7 )
 
-[sub_resource type="DynamicFont" id=7]
+[sub_resource type="DynamicFont" id=9]
 size = 112
 outline_size = 3
 outline_color = Color( 0.65098, 1, 0.988235, 1 )
 use_mipmaps = true
 use_filter = true
 extra_spacing_char = 20
-font_data = SubResource( 4 )
+font_data = SubResource( 7 )
 
-[sub_resource type="DynamicFont" id=5]
+[sub_resource type="DynamicFont" id=10]
 size = 112
 use_mipmaps = true
 use_filter = true
 extra_spacing_char = 42
-font_data = SubResource( 4 )
+font_data = SubResource( 7 )
 
-[sub_resource type="DynamicFont" id=6]
+[sub_resource type="DynamicFont" id=11]
 size = 112
 outline_color = Color( 0.65098, 1, 0.988235, 1 )
 use_mipmaps = true
 use_filter = true
 extra_spacing_char = 20
-font_data = SubResource( 4 )
+font_data = SubResource( 7 )
 
-[sub_resource type="StyleBoxFlat" id=11]
+[sub_resource type="StyleBoxFlat" id=12]
 bg_color = Color( 1, 1, 1, 0 )
 border_width_left = 8
 border_width_top = 8
@@ -165,23 +165,23 @@ border_width_right = 8
 border_width_bottom = 8
 border_color = Color( 0.329412, 1, 0.980392, 1 )
 
-[sub_resource type="StyleBoxEmpty" id=18]
+[sub_resource type="StyleBoxEmpty" id=13]
 
-[sub_resource type="StyleBoxEmpty" id=21]
-
-[sub_resource type="StyleBoxEmpty" id=19]
+[sub_resource type="StyleBoxEmpty" id=14]
 
 [sub_resource type="StyleBoxEmpty" id=15]
 
-[sub_resource type="StyleBoxEmpty" id=20]
+[sub_resource type="StyleBoxEmpty" id=16]
 
-[sub_resource type="DynamicFont" id=16]
+[sub_resource type="StyleBoxEmpty" id=17]
+
+[sub_resource type="DynamicFont" id=18]
 size = 80
 outline_color = Color( 0.65098, 1, 0.988235, 1 )
 use_mipmaps = true
 use_filter = true
 extra_spacing_char = 10
-font_data = SubResource( 4 )
+font_data = SubResource( 7 )
 
 [node name="Control" type="Control"]
 anchor_right = 1.0
@@ -259,10 +259,10 @@ margin_top = -544.0
 margin_right = 2019.0
 margin_bottom = -374.0
 rect_pivot_offset = Vector2( 269.5, 85 )
-custom_fonts/font = SubResource( 8 )
+custom_fonts/font = SubResource( 4 )
 text = "DEFUALT"
 align = 0
-script = SubResource( 9 )
+script = SubResource( 5 )
 
 [node name="Panel" type="Panel" parent="LayoutPresetButton"]
 anchor_right = 1.0
@@ -270,7 +270,7 @@ anchor_bottom = 1.0
 margin_left = -20.0
 margin_right = 20.0
 mouse_filter = 2
-custom_styles/panel = SubResource( 17 )
+custom_styles/panel = SubResource( 6 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -283,7 +283,7 @@ margin_top = -600.0
 margin_right = 1369.0
 margin_bottom = -338.0
 rect_pivot_offset = Vector2( 368, 131 )
-custom_fonts/font = SubResource( 10 )
+custom_fonts/font = SubResource( 8 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_shadow = Color( 0.5, 0.5, 0.55, 1 )
 custom_constants/shadow_offset_x = 7
@@ -305,7 +305,7 @@ margin_top = -408.0
 margin_right = 1176.0
 margin_bottom = -146.0
 rect_pivot_offset = Vector2( 368, 131 )
-custom_fonts/font = SubResource( 7 )
+custom_fonts/font = SubResource( 9 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_shadow = Color( 0.5, 0.5, 0.55, 1 )
 custom_constants/shadow_offset_x = 7
@@ -326,7 +326,7 @@ margin_left = 688.0
 margin_top = -192.0
 margin_right = 975.0
 margin_bottom = 70.0
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 10 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_shadow = Color( 0.65, 1, 0.99, 0.1 )
 custom_constants/shadow_offset_x = 7
@@ -348,7 +348,7 @@ margin_top = -256.0
 margin_right = 1808.0
 margin_bottom = 6.0
 rect_pivot_offset = Vector2( 368, 131 )
-custom_fonts/font = SubResource( 7 )
+custom_fonts/font = SubResource( 9 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_shadow = Color( 0.5, 0.5, 0.55, 1 )
 custom_constants/shadow_offset_x = 7
@@ -369,7 +369,7 @@ margin_left = 1272.0
 margin_top = -72.0
 margin_right = 1600.0
 margin_bottom = 302.0
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = SubResource( 11 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_shadow = Color( 0.65, 1, 0.99, 0.1 )
 custom_constants/shadow_offset_x = 7
@@ -412,7 +412,7 @@ margin_left = -1496.0
 margin_top = -536.0
 margin_right = -1346.0
 margin_bottom = -386.0
-custom_styles/panel = SubResource( 11 )
+custom_styles/panel = SubResource( 12 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -422,11 +422,11 @@ margin_left = 8.0
 margin_top = 8.0
 margin_right = 142.0
 margin_bottom = 142.0
-custom_styles/hover = SubResource( 18 )
-custom_styles/pressed = SubResource( 21 )
-custom_styles/focus = SubResource( 19 )
-custom_styles/disabled = SubResource( 15 )
-custom_styles/normal = SubResource( 20 )
+custom_styles/hover = SubResource( 13 )
+custom_styles/pressed = SubResource( 14 )
+custom_styles/focus = SubResource( 15 )
+custom_styles/disabled = SubResource( 16 )
+custom_styles/normal = SubResource( 17 )
 toggle_mode = true
 expand_icon = true
 script = ExtResource( 5 )
@@ -464,7 +464,7 @@ margin_top = -600.0
 margin_right = 3657.0
 margin_bottom = -338.0
 rect_pivot_offset = Vector2( 368, 131 )
-custom_fonts/font = SubResource( 10 )
+custom_fonts/font = SubResource( 8 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_shadow = Color( 0.5, 0.5, 0.55, 1 )
 custom_constants/shadow_offset_x = 7
@@ -486,7 +486,7 @@ margin_top = -336.0
 margin_right = 3745.0
 margin_bottom = 16.0
 rect_pivot_offset = Vector2( 368, 131 )
-custom_fonts/font = SubResource( 16 )
+custom_fonts/font = SubResource( 18 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_shadow = Color( 0.65, 1, 0.99, 0.1 )
 custom_constants/shadow_offset_x = 7

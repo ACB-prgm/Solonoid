@@ -41,7 +41,7 @@ func _out(new_scene=null, back_in=false):
 	if new_scene:
 		for _child in _2DWorld.get_children():
 			_child.queue_free()
-		new_scene = load(new_scene).instance()
+		new_scene = new_scene.instance()
 		_2DWorld.add_child(new_scene)
 		
 		Globals.TitleScreen.change_page("HIDE")
@@ -70,6 +70,9 @@ func change_SE_volume(new_volume):
 func change_title_page(page):
 	_out(null)
 	yield(self, "_out_finished")
+	
+	for _child in _2DWorld.get_children():
+		_child.queue_free()
 	
 	Globals.TitleScreen.change_page(page)
 	_in(null, false)

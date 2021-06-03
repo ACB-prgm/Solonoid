@@ -10,7 +10,8 @@ const SONGS = {
 		"res://Audio/Music/Game/D0S-88 - Raging Inferno.ogg",
 		"res://Audio/Music/Game/DOS-88 - Double Tap.ogg",
 	],
-	"SCORE" : ["res://Audio/Music/UI/DOS-88 - City Stomper.ogg"]
+	"SCORE" : ["res://Audio/Music/UI/DOS-88 - City Stomper.ogg"],
+	"FAIL" : ["res://Audio/Music/UI/DOS-88 - Liquid Metal.ogg"]
 }
 
 onready var tween = $Tween

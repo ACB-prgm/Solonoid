@@ -4,6 +4,7 @@ extends Node2D
 onready var tween = $Tween
 onready var light = $Light2D
 
+var shake = true
 
 func _ready():
 	tween.interpolate_property(light, "energy", null, 0.0, 
@@ -14,6 +15,9 @@ func _ready():
 	
 	$AnimatedSprite.set_frame(0)
 	$AnimatedSprite.play()
+	
+	if shake:
+		Globals.camera.shake(100, .3, 100)
 
 
 func _on_Particles2D_Plus_particles_cycle_finished():

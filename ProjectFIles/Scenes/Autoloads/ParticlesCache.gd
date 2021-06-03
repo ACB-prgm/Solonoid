@@ -8,12 +8,14 @@ var bulletParticles = preload("res://Scenes/Autoloads/Materials/PlayerBullet.tre
 var bulletImpactParticles = preload("res://Scenes/Autoloads/Materials/BulletImpactParticles.tres")
 var enemyExplosionShards = preload("res://Scenes/Autoloads/Materials/EnemyExplosionShards.tres")
 var portalParticles = preload("res://Scenes/Autoloads/Materials/PortalParticles.tres")
+var lasergeneratorParticles = preload("res://Scenes/Autoloads/Materials/LaserGeneratorParticles.tres")
 
 var materials = [
 	bulletParticles,
 	bulletImpactParticles,
 	enemyExplosionShards,
-	portalParticles
+	portalParticles,
+	lasergeneratorParticles
 ]
 
 

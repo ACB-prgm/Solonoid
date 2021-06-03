@@ -29,7 +29,8 @@ var aim_dir: Vector2
 
 
 func _ready():
-	portal()
+	if Globals._2DWorld:
+		portal()
 	Globals.player = self
 
 
@@ -121,6 +122,7 @@ func portal(_in=true):
 	if _in:
 		start_progress = 1.0
 	else:
+		dead = true
 		thrusterAudio.volume_db = -40
 		set_physics_process(false)
 		scoreTimer.stop()
@@ -142,16 +144,18 @@ func _on_Tween_tween_all_completed():
 	if shader.get("shader_param/progress") == 0.0:
 		scoreTimer.start()
 		_in = true
+		Globals.camera.shake(1000, 0.3, 1000, 8)
 	
 	set_physics_process(_in)
 	trailsNode.visible = _in
 	portalAnimatedSprite.play("", !_in)
 	
-	Globals.camera.shake(1000, 0.3, 1000, 8)
 	Globals.current_score_time = score_time
 
 
-func _on_HitboxArea2D_area_entered(area):
+func take_damage():
+	velocity = Vector2.ZERO
+	Globals.camera.shake(1000, 0.3, 1000, 8)
 	health -= 1
 	
 	if health <= 0:
@@ -161,6 +165,9 @@ func die():
 	if !dead:
 		dead = true
 		portal(false)
+		
+		Transitioner.change_title_page("SCORE")
+		Music._out()
 
 
 # SCORE TIMER FUNCTIONS ————————————————————————————————————————————————————————

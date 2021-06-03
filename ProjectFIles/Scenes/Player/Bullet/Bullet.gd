@@ -32,9 +32,6 @@ func _on_Area2D_body_entered(body):
 		body.take_damage(damage, body.global_position.direction_to(global_position))
 	die()
 
-func _on_VisibilityNotifier2D_screen_exited():
-	die(true)
-
 
 func die(offscreen = false):
 	if !dead:

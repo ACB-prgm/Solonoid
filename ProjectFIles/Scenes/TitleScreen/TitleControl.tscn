@@ -1,6 +1,6 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
-[ext_resource path="res://Scenes/TitleScreen/Control.gd" type="Script" id=1]
+[ext_resource path="res://Scenes/TitleScreen/TitleControl.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/TitleScreen/TextButton.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scenes/TitleScreen/BG.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Fonts/JetBrainsMono-Medium.ttf" type="DynamicFontData" id=5]
@@ -56,6 +56,14 @@ shader = SubResource( 1 )
 size = 288
 outline_size = 3
 outline_color = Color( 0.65098, 1, 0.988235, 1 )
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 6 )
+
+[sub_resource type="DynamicFont" id=7]
+size = 80
+outline_size = 2
+outline_color = Color( 0.9, 0.2, 0.2, 0.1 )
 use_mipmaps = true
 use_filter = true
 font_data = ExtResource( 6 )
@@ -136,6 +144,25 @@ custom_colors/font_color_shadow = Color( 0.5, 0.5, 0.55, 1 )
 custom_constants/shadow_offset_x = 7
 custom_constants/shadow_offset_y = 7
 text = "Solonoid"
+align = 1
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HighScoreLabel" type="Label" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -1919.0
+margin_top = 390.628
+margin_right = 1918.0
+margin_bottom = 490.628
+custom_fonts/font = SubResource( 7 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_shadow = Color( 0.33, 1, 0.98, 0.2 )
+custom_constants/shadow_offset_x = 7
+custom_constants/shadow_offset_y = 7
+text = "High score : 000"
 align = 1
 uppercase = true
 __meta__ = {

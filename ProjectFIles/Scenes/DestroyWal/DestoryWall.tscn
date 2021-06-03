@@ -4,7 +4,7 @@
 [ext_resource path="res://Images/DestoryWallLight.png" type="Texture" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 318, 50 )
+extents = Vector2( 371, 75 )
 
 [node name="DestoryWall" type="StaticBody2D"]
 collision_layer = 4

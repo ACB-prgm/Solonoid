@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://Images/ship_sidesB.png" type="Texture" id=1]
 [ext_resource path="res://Scenes/Player/Player.gd" type="Script" id=2]
@@ -12,68 +12,65 @@
 [ext_resource path="res://Scenes/Player/Dissolve.shader" type="Shader" id=10]
 [ext_resource path="res://Images/ShockwaveAnim.png" type="Texture" id=11]
 
-[sub_resource type="AtlasTexture" id=4]
+[sub_resource type="AtlasTexture" id=1]
 flags = 4
 atlas = ExtResource( 11 )
 region = Rect2( 0, 0, 350, 350 )
 
-[sub_resource type="AtlasTexture" id=5]
+[sub_resource type="AtlasTexture" id=2]
 flags = 4
 atlas = ExtResource( 11 )
 region = Rect2( 350, 0, 350, 350 )
 
-[sub_resource type="AtlasTexture" id=6]
+[sub_resource type="AtlasTexture" id=3]
 flags = 4
 atlas = ExtResource( 11 )
 region = Rect2( 700, 0, 350, 350 )
 
-[sub_resource type="AtlasTexture" id=7]
+[sub_resource type="AtlasTexture" id=4]
 flags = 4
 atlas = ExtResource( 11 )
 region = Rect2( 1050, 0, 350, 350 )
 
-[sub_resource type="AtlasTexture" id=8]
+[sub_resource type="AtlasTexture" id=5]
 flags = 4
 atlas = ExtResource( 11 )
 region = Rect2( 1400, 0, 350, 350 )
 
-[sub_resource type="AtlasTexture" id=9]
+[sub_resource type="AtlasTexture" id=6]
 flags = 4
 atlas = ExtResource( 11 )
 region = Rect2( 1750, 0, 350, 350 )
 
-[sub_resource type="AtlasTexture" id=10]
+[sub_resource type="AtlasTexture" id=7]
 flags = 4
 atlas = ExtResource( 11 )
 region = Rect2( 2100, 0, 350, 350 )
 
-[sub_resource type="SpriteFrames" id=11]
+[sub_resource type="SpriteFrames" id=8]
 animations = [ {
-"frames": [ null, SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ), null ],
+"frames": [ null, SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), null ],
 "loop": false,
 "name": "default",
 "speed": 35.0
 } ]
 
-[sub_resource type="ShaderMaterial" id=1]
+[sub_resource type="ShaderMaterial" id=9]
 shader = ExtResource( 10 )
 shader_param/progress = null
 shader_param/noise_desnity = 60.0
 shader_param/beam_size = 0.15
 shader_param/color = Color( 0, 1.02, 1.2, 1 )
 
-[sub_resource type="CircleShape2D" id=2]
+[sub_resource type="CircleShape2D" id=10]
 radius = 55.0
 
-[sub_resource type="ShaderMaterial" id=3]
+[sub_resource type="ShaderMaterial" id=11]
 shader = ExtResource( 8 )
 shader_param/scale = 0.0
 shader_param/max_scale = 10.0
 shader_param/intensity = 2.0
 shader_param/amount = 40
-
-[sub_resource type="CircleShape2D" id=12]
-radius = 60.0
 
 [node name="Player" type="KinematicBody2D"]
 script = ExtResource( 2 )
@@ -83,16 +80,16 @@ script = ExtResource( 2 )
 [node name="PortalAnimatedSprite" type="AnimatedSprite" parent="."]
 modulate = Color( 0.65098, 1, 0.988235, 1 )
 self_modulate = Color( 2, 2, 2, 1 )
-frames = SubResource( 11 )
+frames = SubResource( 8 )
 
 [node name="Sprite" type="Sprite" parent="."]
-material = SubResource( 1 )
+material = SubResource( 9 )
 scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 1 )
 normal_map = ExtResource( 5 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource( 2 )
+shape = SubResource( 10 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
@@ -109,7 +106,7 @@ one_shot = true
 [node name="CanvasLayer" type="CanvasLayer" parent="Camera2D"]
 
 [node name="ColorRect" type="ColorRect" parent="Camera2D/CanvasLayer"]
-material = SubResource( 3 )
+material = SubResource( 11 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 __meta__ = {
@@ -158,14 +155,7 @@ MAX_POINTS = 5
 [node name="ScoreTimer" type="Timer" parent="."]
 wait_time = 0.1
 
-[node name="HitboxArea2D" type="Area2D" parent="."]
-collision_mask = 12
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxArea2D"]
-shape = SubResource( 12 )
-
 [connection signal="tween_all_completed" from="Tween" to="." method="_on_Tween_tween_all_completed"]
 [connection signal="timeout" from="Camera2D/Timer" to="Camera2D" method="_on_Timer_timeout"]
 [connection signal="timeout" from="ShootTimer" to="." method="_on_ShootTimer_timeout"]
 [connection signal="timeout" from="ScoreTimer" to="." method="_on_ScoreTimer_timeout"]
-[connection signal="area_entered" from="HitboxArea2D" to="." method="_on_HitboxArea2D_area_entered"]

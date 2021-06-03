@@ -1,10 +1,11 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Fonts/Flat-it - BioSans-Regular.otf" type="DynamicFontData" id=1]
 [ext_resource path="res://Scenes/Decorative/Crystal/Crystal.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scenes/TitleScreen/BG.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scenes/TitleScreen/ScoreControl/ScoreControl.gd" type="Script" id=4]
 [ext_resource path="res://Scenes/TitleScreen/TextButton.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Audio/SoundEffects/TextBlip.wav" type="AudioStream" id=6]
 
 [sub_resource type="CanvasItemMaterial" id=1]
 blend_mode = 1
@@ -401,6 +402,8 @@ __meta__ = {
 margin_left = 691.0
 margin_right = 952.0
 margin_bottom = 178.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
 custom_fonts/font = SubResource( 9 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_shadow = Color( 0.5, 0.5, 0.55, 1 )
@@ -422,7 +425,7 @@ custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_shadow = Color( 0.5, 0.5, 0.55, 1 )
 custom_constants/shadow_offset_x = 7
 custom_constants/shadow_offset_y = 7
-text = "x1"
+text = "x0"
 align = 1
 __meta__ = {
 "_edit_use_anchors_": false
@@ -471,7 +474,7 @@ custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_shadow = Color( 0.5, 0.5, 0.55, 1 )
 custom_constants/shadow_offset_x = 7
 custom_constants/shadow_offset_y = 7
-text = "x1"
+text = "x0"
 align = 1
 __meta__ = {
 "_edit_use_anchors_": false
@@ -498,40 +501,75 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="NextLevelButton" parent="." instance=ExtResource( 5 )]
+[node name="PanelContainer3" type="PanelContainer" parent="."]
+margin_left = 96.0
+margin_top = 64.0
+margin_right = 656.0
+margin_bottom = 296.0
+rect_pivot_offset = Vector2( -864, -896 )
+custom_styles/panel = SubResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RetryLevelButton2" parent="PanelContainer3" instance=ExtResource( 5 )]
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 550.0
+margin_bottom = 222.0
+rect_pivot_offset = Vector2( 270, 106 )
+text = "Retry"
+valign = 1
+
+[node name="PanelContainer4" type="PanelContainer" parent="."]
 anchor_left = 1.0
 anchor_right = 1.0
-margin_left = -1056.0
+margin_left = -1136.0
 margin_top = 64.0
 margin_right = -96.0
-margin_bottom = 276.0
-rect_pivot_offset = Vector2( 480, 106 )
+margin_bottom = 296.0
+custom_styles/panel = SubResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NextLevelButton" parent="PanelContainer4" instance=ExtResource( 5 )]
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 1030.0
+margin_bottom = 222.0
+rect_pivot_offset = Vector2( 510, 106 )
 text = "Next level"
-align = 2
 valign = 1
 
-[node name="RetryLevelButton2" parent="." instance=ExtResource( 5 )]
-margin_left = 104.0
-margin_top = 64.0
-margin_right = 584.0
-margin_bottom = 276.0
-rect_pivot_offset = Vector2( 240, 106 )
-text = "Retry"
-align = 0
-valign = 1
+[node name="PanelContainer2" type="PanelContainer" parent="."]
+margin_left = 96.0
+margin_top = 384.0
+margin_right = 560.0
+margin_bottom = 616.0
+custom_styles/panel = SubResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="TextButton" parent="." instance=ExtResource( 5 )]
-margin_left = 3248.0
-margin_top = 648.0
-margin_right = 3728.0
-margin_bottom = 860.0
-rect_pivot_offset = Vector2( 240, 106 )
-text = "Title"
+[node name="QuitButton" parent="PanelContainer2" instance=ExtResource( 5 )]
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 454.0
+margin_bottom = 222.0
+rect_pivot_offset = Vector2( 222, 106 )
+text = "Quit"
+
+[node name="TypingSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+volume_db = 24.0
+pitch_scale = 2.0
+bus = "SoundEffects"
 
 [connection signal="tween_step" from="Tween" to="." method="_on_Tween_tween_step"]
-[connection signal="TextButton_Pressed" from="NextLevelButton" to="." method="_on_NextLevelButton_TextButton_Pressed"]
-[connection signal="TextButton_Pressed" from="RetryLevelButton2" to="." method="_on_RetryLevelButton2_TextButton_Pressed"]
-[connection signal="TextButton_Pressed" from="TextButton" to="." method="_on_TextButton_TextButton_Pressed"]
+[connection signal="TextButton_Pressed" from="PanelContainer3/RetryLevelButton2" to="." method="_on_RetryLevelButton2_TextButton_Pressed"]
+[connection signal="TextButton_Pressed" from="PanelContainer4/NextLevelButton" to="." method="_on_NextLevelButton_TextButton_Pressed"]
+[connection signal="TextButton_Pressed" from="PanelContainer2/QuitButton" to="." method="_on_TextButton_TextButton_Pressed"]
 
 [editable path="Lights_BG/Node2D/Crystal"]
 [editable path="Lights_BG/Node2D/Crystal2"]

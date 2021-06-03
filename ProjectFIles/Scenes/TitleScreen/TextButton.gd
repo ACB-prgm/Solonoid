@@ -7,6 +7,7 @@ const BLUE = Color(0.65, 1.0, 0.99, 1.0)
 #onready var hoverSound = $HoverSound
 #onready var clickSound = $ClickSound
 onready var animPlayer = $AnimationPlayer
+onready var button = $Button
 
 signal TextButton_Pressed
 
@@ -38,3 +39,7 @@ func _on_Button_mouse_entered():
 func _on_Button_mouse_exited():
 	if not Engine.editor_hint:
 		animPlayer.play("unhover")
+
+func _set_disabled(disabled):
+	button.disabled = disabled
+	

@@ -15,6 +15,7 @@ var dirs = ["_right", "_left", "_up", "_down"]
 
 func _ready():
 	set_input_map(Globals.layout_preset)
+	layoutPresetButton.text = Globals.layout_preset
 	
 	labels = get_children()
 	for label in get_children():
@@ -38,6 +39,7 @@ func _process(_delta):
 
 
 func _on_BackButton_TextButton_Pressed():
+	Globals.save_data()
 	Transitioner.change_title_page("TITLE")
 
 

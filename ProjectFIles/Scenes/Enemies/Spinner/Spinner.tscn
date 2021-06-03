@@ -1,0 +1,70 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://Images/LaserTexture.png" type="Texture" id=1]
+[ext_resource path="res://Images/SpinnerCore_n.png" type="Texture" id=2]
+[ext_resource path="res://Images/SpinnerCore.png" type="Texture" id=3]
+[ext_resource path="res://Images/Portal_n.png" type="Texture" id=4]
+[ext_resource path="res://Images/LightDifuse.png" type="Texture" id=5]
+[ext_resource path="res://Images/Particle.png" type="Texture" id=6]
+[ext_resource path="res://Scenes/Enemies/Spinner/Spinner.gd" type="Script" id=7]
+
+[sub_resource type="CircleShape2D" id=3]
+radius = 76.6111
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 240, 10 )
+
+[sub_resource type="Curve" id=2]
+_data = [ Vector2( 0.00815217, 1 ), 0.0, -0.771003, 0, 0, Vector2( 1, 0.45045 ), -0.52005, 0.0, 0, 0 ]
+
+[node name="Spinner" type="StaticBody2D"]
+script = ExtResource( 7 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 3 )
+
+[node name="Light2D" type="Light2D" parent="."]
+position = Vector2( -541.3, -540.1 )
+texture = ExtResource( 5 )
+offset = Vector2( 541.3, 540.1 )
+color = Color( 0.901961, 0.2, 0.2, 1 )
+energy = 0.65
+
+[node name="Spinner" type="Area2D" parent="."]
+collision_layer = 12
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Spinner"]
+shape = SubResource( 4 )
+
+[node name="lgihtsprite" type="Sprite" parent="Spinner"]
+modulate = Color( 0.901961, 0.2, 0.2, 1 )
+self_modulate = Color( 1.2, 1.1, 1.1, 1 )
+scale = Vector2( 0.44, 0.44 )
+texture = ExtResource( 6 )
+normal_map = ExtResource( 4 )
+
+[node name="Sprite" type="Sprite" parent="Spinner"]
+modulate = Color( 0.101961, 0.101961, 0.109804, 1 )
+texture = ExtResource( 3 )
+normal_map = ExtResource( 2 )
+
+[node name="RightLine2D" type="Line2D" parent="Spinner"]
+modulate = Color( 1.2, 1.1, 1.1, 1 )
+points = PoolVector2Array( 120, 0, 500, 0 )
+width = 80.0
+width_curve = SubResource( 2 )
+default_color = Color( 0.901961, 0.2, 0.2, 1 )
+texture = ExtResource( 1 )
+texture_mode = 2
+
+[node name="LeftLine2D" type="Line2D" parent="Spinner"]
+modulate = Color( 1.2, 1.1, 1.1, 1 )
+scale = Vector2( -1, -1 )
+points = PoolVector2Array( 120, 0, 500, 0 )
+width = 80.0
+width_curve = SubResource( 2 )
+default_color = Color( 0.901961, 0.2, 0.2, 1 )
+texture = ExtResource( 1 )
+texture_mode = 2
+
+[connection signal="body_entered" from="Spinner" to="." method="_on_Spinner_body_entered"]

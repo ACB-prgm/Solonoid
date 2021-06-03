@@ -26,6 +26,7 @@ func die():
 		tween.start()
 		
 		var death_ins = death_TSCN.instance()
+		death_ins.shake = false
 		death_ins.global_position = sprite.global_position
 		death_ins.scale *= 0.3
 		Globals._2DWorld.add_child(death_ins)
