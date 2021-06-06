@@ -372,12 +372,11 @@ __meta__ = {
 [node name="CenterContainer" type="CenterContainer" parent="PanelContainer"]
 margin_left = 10.0
 margin_top = 10.0
-margin_right = 1286.5
+margin_right = 1296.0
 margin_bottom = 376.0
 
 [node name="MultipliersGridContainer" type="GridContainer" parent="PanelContainer/CenterContainer"]
-margin_left = 58.0
-margin_right = 1217.0
+margin_right = 1286.0
 margin_bottom = 366.0
 custom_constants/vseparation = 10
 custom_constants/hseparation = 50
@@ -400,7 +399,7 @@ __meta__ = {
 
 [node name="TimevalueLabel" type="Label" parent="PanelContainer/CenterContainer/MultipliersGridContainer"]
 margin_left = 691.0
-margin_right = 952.0
+margin_right = 1079.0
 margin_bottom = 178.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -409,7 +408,7 @@ custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_shadow = Color( 0.5, 0.5, 0.55, 1 )
 custom_constants/shadow_offset_x = 7
 custom_constants/shadow_offset_y = 7
-text = "000"
+text = "00.00"
 align = 1
 uppercase = true
 __meta__ = {
@@ -417,8 +416,8 @@ __meta__ = {
 }
 
 [node name="TimeMultiplierLabel" type="Label" parent="PanelContainer/CenterContainer/MultipliersGridContainer"]
-margin_left = 1002.0
-margin_right = 1159.0
+margin_left = 1129.0
+margin_right = 1286.0
 margin_bottom = 178.0
 custom_fonts/font = SubResource( 9 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
@@ -450,7 +449,7 @@ __meta__ = {
 [node name="AttemptvalueLabel" type="Label" parent="PanelContainer/CenterContainer/MultipliersGridContainer"]
 margin_left = 691.0
 margin_top = 188.0
-margin_right = 952.0
+margin_right = 1079.0
 margin_bottom = 366.0
 custom_fonts/font = SubResource( 9 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
@@ -465,9 +464,9 @@ __meta__ = {
 }
 
 [node name="AttemptMultiplierLabel" type="Label" parent="PanelContainer/CenterContainer/MultipliersGridContainer"]
-margin_left = 1002.0
+margin_left = 1129.0
 margin_top = 188.0
-margin_right = 1159.0
+margin_right = 1286.0
 margin_bottom = 366.0
 custom_fonts/font = SubResource( 9 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )

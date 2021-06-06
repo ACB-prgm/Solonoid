@@ -97,7 +97,7 @@ func _ready():
 
 func _on_Tween_tween_step(_object, key, _elapsed, _value):
 	if key == ":time_value":
-		timeValueLabel.text = str(stepify(time_value, 0.01))
+		timeValueLabel.text = str(time_value).pad_decimals(2).pad_zeros(2)
 		
 		if time_value < BEST_TIME:
 			time_multi = 3
