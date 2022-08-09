@@ -6,9 +6,8 @@
 [ext_resource path="res://Scenes/Enemies/Enemy_1/Enemy_1.gd" type="Script" id=4]
 [ext_resource path="res://Audio/SoundEffects/Screamers.ogg" type="AudioStream" id=5]
 
-[sub_resource type="Gradient" id=1]
-offsets = PoolRealArray( 0, 0.84375 )
-colors = PoolColorArray( 0.901961, 0.2, 0.2, 1, 0.282353, 0.109804, 0.109804, 0 )
+[sub_resource type="Gradient" id=4]
+colors = PoolColorArray( 0.901961, 0.2, 0.2, 1, 0.901961, 0.2, 0.2, 0 )
 
 [sub_resource type="CircleShape2D" id=2]
 radius = 71.6892
@@ -33,8 +32,8 @@ normal_map = ExtResource( 2 )
 modulate = Color( 1.15, 1.1, 1.1, 1 )
 position = Vector2( -50, 0 )
 rotation = 1.5708
-line_thickness = 20
-line_gradient = SubResource( 1 )
+line_thickness = 60
+line_gradient = SubResource( 4 )
 light_color = Color( 0.901961, 0.2, 0.2, 1 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]

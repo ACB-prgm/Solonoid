@@ -1,15 +1,18 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Scenes/Player/LineTrail.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Player/LineTrailpos.gd" type="Script" id=2]
-[ext_resource path="res://Images/LightingTest2.png" type="Texture" id=3]
+[ext_resource path="res://Images/LightDifuse.png" type="Texture" id=3]
+[ext_resource path="res://Images/LaserTexture.png" type="Texture" id=4]
 
 [sub_resource type="Gradient" id=1]
-offsets = PoolRealArray( 0, 0.273026, 0.980263 )
-colors = PoolColorArray( 0.919378, 1, 0.997643, 1, 0.64987, 1, 0.989762, 1, 0.65098, 1, 0.988235, 0 )
+colors = PoolColorArray( 0.901961, 0.2, 0.2, 1, 0.901961, 0.2, 0.2, 0 )
 
 [sub_resource type="Curve" id=2]
 _data = [ Vector2( 0.00255102, 1 ), 0.0, -0.693693, 0, 0, Vector2( 1, 0.27027 ), -0.252252, 0.0, 0, 0 ]
+
+[sub_resource type="CanvasItemMaterial" id=3]
+blend_mode = 1
 
 [node name="LineTrail" type="Position2D"]
 script = ExtResource( 2 )
@@ -17,20 +20,29 @@ line_gradient = SubResource( 1 )
 light_color = Color( 0.32549, 1, 0.984314, 1 )
 
 [node name="Line2D" type="Line2D" parent="."]
-modulate = Color( 1.1, 1.1, 1.15, 1 )
+modulate = Color( 1.2, 1.2, 1.3, 1 )
 show_behind_parent = true
 width_curve = SubResource( 2 )
 default_color = Color( 0.32549, 1, 0.984314, 1 )
 gradient = SubResource( 1 )
-antialiased = true
+texture = ExtResource( 4 )
+texture_mode = 2
 script = ExtResource( 1 )
 
 [node name="Tween" type="Tween" parent="Line2D"]
 
 [node name="Light2D" type="Light2D" parent="."]
+position = Vector2( 0.154678, 0 )
 texture = ExtResource( 3 )
 texture_scale = 0.07
 color = Color( 0.32549, 1, 0.984314, 1 )
 range_height = 50.0
+
+[node name="Sprite" type="Sprite" parent="."]
+modulate = Color( 0.65098, 1, 0.988235, 1 )
+material = SubResource( 3 )
+scale = Vector2( 0.08, 0.08 )
+z_index = -1
+texture = ExtResource( 3 )
 
 [connection signal="tween_all_completed" from="Line2D/Tween" to="Line2D" method="_on_Tween_tween_all_completed"]

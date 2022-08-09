@@ -6,7 +6,6 @@ const SPAWN_COLOR = Color(4,5,5,0)
 
 onready var trail = $BulletTrailLine2D
 onready var tween = $Tween
-onready var light = $Light2D
 onready var drift := rand_range(-.025, .025)
 
 var impact_TSCN = preload("res://Scenes/Player/Bullet/BulletImpact.tscn")
@@ -43,7 +42,6 @@ func die(offscreen = false):
 		
 		$Bullet.hide()
 		$Particles2D.set_emitting(false)
-		$Light2D.hide()
 		
 		trail.end()
 		

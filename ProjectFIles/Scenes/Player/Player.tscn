@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://Images/ship_sidesB.png" type="Texture" id=1]
 [ext_resource path="res://Scenes/Player/Player.gd" type="Script" id=2]
@@ -72,6 +72,9 @@ shader_param/max_scale = 10.0
 shader_param/intensity = 2.0
 shader_param/amount = 40
 
+[sub_resource type="Gradient" id=12]
+colors = PoolColorArray( 1, 1, 1, 1, 0.32549, 1, 0.984314, 0 )
+
 [node name="Player" type="KinematicBody2D"]
 script = ExtResource( 2 )
 
@@ -139,18 +142,26 @@ position = Vector2( 0, -70 )
 [node name="FrontRightTrail" parent="LineTrails" instance=ExtResource( 6 )]
 position = Vector2( 50, -20 )
 MAX_POINTS = 4
+line_thickness = 30
+line_gradient = SubResource( 12 )
 
 [node name="FrontLeftTrail" parent="LineTrails" instance=ExtResource( 6 )]
 position = Vector2( -50, -20 )
 MAX_POINTS = 4
+line_thickness = 30
+line_gradient = SubResource( 12 )
 
 [node name="BackLeftTrail" parent="LineTrails" instance=ExtResource( 6 )]
 position = Vector2( -45, 45 )
 MAX_POINTS = 5
+line_thickness = 30
+line_gradient = SubResource( 12 )
 
 [node name="BackRightTrail" parent="LineTrails" instance=ExtResource( 6 )]
 position = Vector2( 45, 45 )
 MAX_POINTS = 5
+line_thickness = 30
+line_gradient = SubResource( 12 )
 
 [node name="ScoreTimer" type="Timer" parent="."]
 wait_time = 0.1

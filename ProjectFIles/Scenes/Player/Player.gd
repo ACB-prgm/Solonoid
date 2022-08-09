@@ -27,10 +27,16 @@ var velocity: Vector2
 var aim_input_dir: Vector2
 var aim_dir: Vector2
 
+var id : int
+
 
 func _ready():
 	if Globals._2DWorld:
 		portal()
+	
+	if Globals.GamePad_connected:
+		id = Globals.GamePad_connected
+	
 	Globals.player = self
 
 
@@ -43,9 +49,16 @@ func _physics_process(_delta):
 
 # MOVEMENT FUNCTIONS ———————————————————————————————————————————————————————————
 func movement():
-	input_vector.x = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
-	input_vector.y = Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")
-	input_vector = input_vector.normalized()
+	
+	if id:
+		var side_dict = GamePad.players
+		if side_dict.get(id).get("left"):
+			side_dict = side_dict.get(id).get("left")
+			input_vector = side_dict.get("input_direction")
+	else:
+		input_vector.x = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
+		input_vector.y = Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")
+		input_vector = input_vector.normalized()
 	
 	if input_vector:
 		velocity += input_vector * ACCELERATION
@@ -88,9 +101,15 @@ func _on_ShootTimer_timeout():
 
 # AIMING FUNCTIONS —————————————————————————————————————————————————————————————
 func aim():
-	aim_input_dir.x = Input.get_action_strength("aim_right") - Input.get_action_strength("aim_left")
-	aim_input_dir.y = Input.get_action_strength("aim_down") - Input.get_action_strength("aim_up")
-	aim_input_dir = aim_input_dir.normalized()
+	if id:
+		var side_dict = GamePad.players
+		if side_dict.get(id).get("right"):
+			side_dict = side_dict.get(id).get("right")
+			aim_input_dir = side_dict.get("input_direction")
+	else:
+		aim_input_dir.x = Input.get_action_strength("aim_right") - Input.get_action_strength("aim_left")
+		aim_input_dir.y = Input.get_action_strength("aim_down") - Input.get_action_strength("aim_up")
+		aim_input_dir = aim_input_dir.normalized()
 	
 	if aim_input_dir:
 		aim_dir = aim_input_dir

@@ -2,6 +2,7 @@ extends Node
 
 
 var player
+var GamePad_connected = null
 var camera
 var _2DWorld
 var TitleScreen

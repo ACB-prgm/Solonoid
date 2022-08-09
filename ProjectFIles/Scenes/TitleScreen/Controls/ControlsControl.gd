@@ -14,6 +14,11 @@ var labels
 var dirs = ["_right", "_left", "_up", "_down"]
 
 func _ready():
+	# warning-ignore:return_value_discarded
+	GamePad.connect("gamepad_connected", self, "_on_GamePad_controller_connected")
+# warning-ignore:return_value_discarded
+	GamePad.connect("gamepad_disconnected", self, "_on_GamePad_controller_disconnected")
+	
 	set_input_map(Globals.layout_preset)
 	layoutPresetButton.text = Globals.layout_preset
 	
@@ -139,3 +144,17 @@ func set_input_map(preset: String):
 				new_input.set_scancode(scancode)
 				InputMap.action_erase_events(action)
 				InputMap.action_add_event(action,new_input)
+
+
+# GODOT GAMEPAD FUNCTIONS ——————————————————————————————————————————————————————
+func _on_ConnectGamepadButton_TextButton_Pressed():
+	GamePad.search_for_controllers()
+
+
+func _on_GamePad_controller_connected(id):
+	Globals.GamePad_connected = id
+	GamePad.stop_search_for_controllers()
+
+
+func _on_GamePad_controller_disconnected(_id):
+	Globals.GamePad_connected = null
